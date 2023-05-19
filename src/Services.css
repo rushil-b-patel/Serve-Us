@@ -1,0 +1,27 @@
+.Services{
+    /* background: repeating-linear-gradient(
+      45deg,
+      #ced0da,
+      #c9c9ca 10px,
+      #cbccd3 10px,
+      #c6c7ce 20px
+    ); */
+color: black;
+}
+
+.heading{
+color:#000000;
+margin: 20px;
+padding-left: 50px;
+}
+
+.Cards{
+display: flex;
+padding-bottom: 20px;
+margin: 20px;
+}
+
+.card{
+    padding: 20px;
+    margin: 20px;
+}
