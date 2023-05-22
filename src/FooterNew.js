@@ -14,8 +14,8 @@ function FooterNew() {
                   <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Codentic Car Spa</span>
               </Link>
               <address class='text-start text-white mt-4'>
-                204, Radhaswami Swamipia, Motabazar,<br/> 
-                V.V.Nagar, Anand,<br/>
+                204, Radhaswami Swamipia,<br/> 
+                Motabazar, V.V.Nagar, Anand,<br/>
                 Gujarat, India.
               </address>
           </div>

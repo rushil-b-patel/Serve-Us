@@ -23,6 +23,7 @@ import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import { Link } from 'react-router-dom'
+import Cart from './Cart'
 
 const product = {
   id:1,
