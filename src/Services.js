@@ -6,8 +6,8 @@ import ServicesNew from './ServicesNew'
 function Services() {
   return (
     <>
-
-{/* <div class='flex place-content-center'>
+{/* 
+<div class='sm:gird grid-cols-1 lg:flex place-content-center'>
     <div class='m-10'>
     <ServiceCard ServiceName='Transmission Service'
                   image='https://www.autosofeurope.com/wp-content/uploads/2018/09/shutterstock_352831412.jpg'
@@ -34,7 +34,7 @@ function Services() {
                 </div>
 </div>
 
-<div class='flex place-content-center'>
+<div class='sm:grid grid-cols-1 lg:flex place-content-center'>
             <div class='m-10'>
             <ServiceCard ServiceName='Paint & Dent Service' 
                           image='https://www.hyattsautocare.com/wp-content/uploads/2020/03/198-1024x683.jpg'

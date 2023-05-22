@@ -10,7 +10,7 @@ export default function ServiceCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
+        <CardMedia 
           component="img"
           height="140"
           image={props.image}

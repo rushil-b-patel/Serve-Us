@@ -2,9 +2,9 @@ import React from 'react'
 
 function TimeLine() {
     return (
-        <div class='mx-32 my-10'>
+        <div class='mx-10 lg:mx-32 my-10'>
 
-            <ol class="items-center sm:flex">
+            <ol class="mx-auto items-center sm:flex">
                 <li class="relative mb-6 sm:mb-0">
                     <div class="flex items-center">
                         <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
@@ -25,8 +25,8 @@ function TimeLine() {
                         </div>
                         <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                     </div>
-                    <div class="mt-3 sm:pr-8">
-                        <h3 class="text-lg font-semibold text-gray-900">Get your car to Garage</h3>
+                    <div class="mt-3 ">
+                        <h3 class="text-lg font-semibold text-gray-900">Get car to Garage</h3>
                         <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Get your car fit & well</time>
                         <p class="text-base font-normal text-gray-500 dark:text-gray-400">Do come at proper place & on proper time  to have effective service.</p>
                     </div>
@@ -39,8 +39,8 @@ function TimeLine() {
                         <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                     </div>
                     <div class="mt-3 sm:pr-8">
-                        <h3 class="text-lg font-semibold text-gray-900">Hooray your car is ready</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">More the time more the finishing touch</time>
+                        <h3 class="text-lg font-semibold text-gray-900">Hooray car is ready</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">More finishing touch</time>
                         <p class="text-base font-normal text-gray-500 dark:text-gray-400">It will take the aleast 3-4 working days to service your car</p>
                     </div>
                 </li>
