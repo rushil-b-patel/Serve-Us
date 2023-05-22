@@ -1,12 +1,13 @@
 import React from 'react'
 import ServiceCard from './ServiceCard'
 import TimeLine from './TimeLine'
+import ServicesNew from './ServicesNew'
 
 function Services() {
   return (
     <>
 
-<div class='flex place-content-center'>
+{/* <div class='flex place-content-center'>
     <div class='m-10'>
     <ServiceCard ServiceName='Transmission Service'
                   image='https://www.autosofeurope.com/wp-content/uploads/2018/09/shutterstock_352831412.jpg'
@@ -58,9 +59,10 @@ function Services() {
                           the performance and power of your vehicle. This type of service typically involves upgrading.'
                           />
                           </div>
-</div>
+</div> */}
 
     <TimeLine />
+    <ServicesNew />
     </>
   )
 }

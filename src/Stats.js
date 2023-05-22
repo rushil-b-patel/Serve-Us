@@ -1,14 +1,15 @@
 const stats = [
-    { id: 1, name: 'On the market', value: '3+ Years' },
-    { id: 2, name: 'Serviced cars', value: '75+' },
-    { id: 3, name: 'Countries', value: '3+' },
+    { id: 1, name: 'More than 10 years of operation in the field of Car Services', value: '10+ Years' },
+    { id: 2, name: 'Internaltional standard process and large factory system', value: '10K+' },
+    { id: 3, name: 'Employees in the whole system including engineers', value: '50K+' },
+    { id: 3, name: 'Service Technology to satisfy the customers need & Interest', value: '99%' },
   ]
   
   export default function Stats() {
     return (
-      <div className="bg-white py-24 sm:py-20">
+      <div className="bg-white py-10 sm:pt-10 pb-10 my-10 border-t  border-b">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+          <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
                 <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>

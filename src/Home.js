@@ -5,6 +5,7 @@ import WorkWithUs from './WorkWithUs'
 import SubscribeLetter from './SubscribeLetter'
 import CarouselComponent from './Carousel'
 import Team from './Team'
+import NewCard from './NewCard'
 
 const features = [
   {
@@ -68,7 +69,7 @@ export default function Home() {
       {/* <ImageSlider /> */}
       <Stats />
       {/* <StatsNew /> */}
-
+      <NewCard />
 
       <Team />
       <SubscribeLetter />
