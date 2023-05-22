@@ -36,11 +36,11 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="bg-white py-24 sm:py-10">
+    <div className="bg-white py-10 sm:py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold leading-7 text-indigo-600">Codentic Car Spa..!</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-center text-base font-semibold leading-7 text-indigo-600 sm:text-center">Codentic Car Spa..!</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
           Welcome to the Service
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -64,17 +64,29 @@ export default function Home() {
           </dl>
         </div>
 
-      {/* <CarouselComponent /> */}
-
-      {/* <ImageSlider /> */}
       <Stats />
-      {/* <StatsNew /> */}
-      <NewCard />
+
+        <div className='place-items-center  justify-evenly my-10 mx-auto sm:place-items-center  grid grid-cols-1 lg:flex justify-center'>
+          <div className='sm:px-5'>
+            <NewCard title='Wheel Alignment'
+              description='Go to this step by step guideline process on how to certify for your car service'
+              link='#' />
+          </div>
+          <div className='sm:px-5'>
+            <NewCard title='Wheel Alignment'
+              description='Go to this step by step guideline process on how to certify for your car service'
+              link='#' />
+          </div>
+          <div className='sm:px-5'>
+            <NewCard title='Wheel Alignment'
+              description='Go to this step by step guideline process on how to certify for your car service'
+              link='#' />
+          </div>
+        </div>
 
       <Team />
       <SubscribeLetter />
 
-      {/* <WorkWithUs /> */}
       </div>
     </div>
   )

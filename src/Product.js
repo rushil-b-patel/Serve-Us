@@ -170,7 +170,7 @@ export default function Example() {
 
                 <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
                   <RadioGroup.Label className="sr-only">Choose a Date</RadioGroup.Label>
-                  <div className="grid grid-cols-4 gap-4 sm:grid-cols-3 lg:grid-cols-3">
+                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-2">
                     {product.date.map((size) => (
                       <RadioGroup.Option
                         key={size.name}
