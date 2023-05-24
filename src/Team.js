@@ -32,7 +32,7 @@ const people = [
                         Our experts have a comprehensive understanding of how cars work,engine, transmission, suspension, brakes, and other components. They are familiar with different car models.
             </p>
           </div>
-          <ul role="list" className="justify-center grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          <ul role="list" className="justify-start grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
             {people.map((person) => (
               <li key={person.name}>
                 <div className="flex items-center gap-x-6">

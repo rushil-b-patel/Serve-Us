@@ -25,7 +25,7 @@ function TimeLine() {
                         </div>
                         <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                     </div>
-                    <div class="mt-3 ">
+                    <div class="mt-3 sm:pr-8">
                         <h3 class="text-lg font-semibold text-gray-900">Get car to Garage</h3>
                         <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Get your car fit & well</time>
                         <p class="text-base font-normal text-gray-500 dark:text-gray-400">Do come at proper place & on proper time  to have effective service.</p>

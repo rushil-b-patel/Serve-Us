@@ -6,6 +6,7 @@ import SubscribeLetter from './SubscribeLetter'
 import CarouselComponent from './Carousel'
 import Team from './Team'
 import NewCard from './NewCard'
+import Carousel from './Carousel'
 
 const features = [
   {
@@ -36,7 +37,7 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="bg-white py-10 sm:py-10">
+    <div className="bg-white py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-center text-base font-semibold leading-7 text-indigo-600 sm:text-center">Codentic Car Spa..!</h2>
@@ -86,7 +87,7 @@ export default function Home() {
 
       <Team />
       <SubscribeLetter />
-
+      
       </div>
     </div>
   )

@@ -24,10 +24,10 @@ export default function Example() {
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12">
+        <Popover.Group className="hidden  lg:flex lg:gap-x-12">
             <Link to='/' className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
               Home
             </Link>
@@ -41,6 +41,8 @@ export default function Example() {
           <Link to='/Form' className="text-sm font-semibold leading-6 text-white">
             Appointment
           </Link>
+          <div>
+          </div>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link to='/Contact' className="text-sm font-semibold leading-6 text-white">
@@ -48,9 +50,10 @@ export default function Example() {
           </Link>
         </div>
       </nav>
-      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+      
+      <Dialog as="div" className="lg:hidden transition duration-300 ease-out" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel  className="transition duration-300 ease-out fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link to='/' className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -74,23 +77,29 @@ export default function Example() {
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
-                      <Link to='/' className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
+                      <Link to='/' 
+                      className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50"
+                      onClick={() => setMobileMenuOpen(false)} 
+                      >
                         Home
                       </Link>
                   )}
                 </Disclosure>
                 <Link to='/Services'
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
                 </Link>
                 <Link to='/Product'
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Product
                 </Link>
                 <Link to='/Form'
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Appointment
                 </Link>
@@ -98,6 +107,7 @@ export default function Example() {
               <div className="py-6">
                 <Link to='Contact'
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
                 </Link>
@@ -107,5 +117,5 @@ export default function Example() {
         </Dialog.Panel>
       </Dialog>
     </header>
-  )
+  ) 
 }
