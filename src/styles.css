@@ -3,11 +3,11 @@
     color: blueviolet;
 }
 
-a{
-        background-color:white;
-        color: black;
-}
 
-.nav_items .active{
+.nav_items:hover{
+    background-color: blueviolet  ;
+}
+.nav_items :active{
     color: black !important;
+    background-color: blueviolet !important;
 }

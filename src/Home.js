@@ -7,6 +7,7 @@ import CarouselComponent from './Carousel'
 import Team from './Team'
 import NewCard from './NewCard'
 import Carousel from './Carousel'
+import Tabs from './Tabs'
 
 const features = [
   {
@@ -63,6 +64,7 @@ export default function Home() {
               </div>
             ))}
           </dl>
+      <Tabs />
         </div>
 
       <Stats />

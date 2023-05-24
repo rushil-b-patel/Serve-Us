@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Dialog, Disclosure, Popover} from '@headlessui/react'
+import { Dialog, Disclosure} from '@headlessui/react'
 import {  Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
-
+import { Link, NavLink } from 'react-router-dom'
+import './styles.css'
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -27,33 +27,33 @@ export default function Example() {
             <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden  lg:flex lg:gap-x-12">
-            <Link to='/' className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
-              Home
-            </Link>
+        <div className="hidden  lg:flex lg:gap-x-12">
+          <NavLink to='/' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
+            Home
+          </NavLink>
 
-          <Link to='/Services' className="text-sm font-semibold leading-6 text-white">
+          <NavLink to='/Services' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
             Services
-          </Link>
-          <Link to='/Product' className="text-sm font-semibold leading-6 text-white">
+          </NavLink>
+
+          <NavLink to='/Product' id="Product" className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
             Product
-          </Link>
-          <Link to='/Form' className="text-sm font-semibold leading-6 text-white">
+          </NavLink>
+
+          <NavLink to='/Form' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
             Appointment
-          </Link>
-          <div>
-          </div>
-        </Popover.Group>
+          </NavLink>
+        </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to='/Contact' className="text-sm font-semibold leading-6 text-white">
+          <NavLink to='/Contact' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
             Contact <span aria-hidden="true">&rarr;</span>
-          </Link>
+          </NavLink>
         </div>
       </nav>
       
       <Dialog as="div" className="lg:hidden transition duration-300 ease-out" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel  className="transition duration-300 ease-out fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel  className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link to='/' className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -78,7 +78,7 @@ export default function Example() {
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                       <Link to='/' 
-                      className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50"
+                      className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                       onClick={() => setMobileMenuOpen(false)} 
                       >
                         Home
@@ -86,19 +86,19 @@ export default function Example() {
                   )}
                 </Disclosure>
                 <Link to='/Services'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
                 </Link>
                 <Link to='/Product'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Product
                 </Link>
                 <Link to='/Form'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Appointment
@@ -106,7 +106,7 @@ export default function Example() {
               </div>
               <div className="py-6">
                 <Link to='Contact'
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
