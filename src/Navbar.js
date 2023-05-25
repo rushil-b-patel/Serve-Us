@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Dialog, Disclosure} from '@headlessui/react'
-import {  Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
+import { Dialog, Disclosure, Transition } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon, } from '@heroicons/react/24/outline'
 import { Link, NavLink } from 'react-router-dom'
 import './styles.css'
 
@@ -11,12 +11,12 @@ export default function Example() {
     <header className="bg-white dark:bg-gray-900">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-        <Link to='/' className="-m-1.5 p-1.5 justify-content flex">
+          <Link to='/' className="-m-1.5 p-1.5 justify-content flex">
             <span className="sr-only">Your Company</span>
             <img className="h-8 mr-3 w-auto" src="https://www.codenticsoftware.com/img/logo.png" alt="" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Codentic Car Spa</span>
           </Link>
-          </div>
+        </div>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -50,10 +50,21 @@ export default function Example() {
           </NavLink>
         </div>
       </nav>
-      
+
       <Dialog as="div" className="lg:hidden transition duration-300 ease-out" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+        <Transition
+        show={mobileMenuOpen}
+        enter="transition-opacity duration-75"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-750"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+        >
+
+        
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel  className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link to='/' className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -77,45 +88,46 @@ export default function Example() {
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
-                      <Link to='/' 
+                    <NavLink to='/'
                       className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
-                      onClick={() => setMobileMenuOpen(false)} 
-                      >
-                        Home
-                      </Link>
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Home
+                    </NavLink>
                   )}
                 </Disclosure>
-                <Link to='/Services'
+                <NavLink to='/Services'
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
-                </Link>
-                <Link to='/Product'
+                </NavLink>
+                <NavLink to='/Product'
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Product
-                </Link>
-                <Link to='/Form'
+                </NavLink>
+                <NavLink to='/Form'
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Appointment
-                </Link>
+                </NavLink>
               </div>
               <div className="py-6">
-                <Link to='Contact'
+                <NavLink to='Contact'
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
-                </Link>
+                </NavLink>
               </div>
             </div>
           </div>
         </Dialog.Panel>
+        </Transition>
       </Dialog>
     </header>
-  ) 
+  )
 }

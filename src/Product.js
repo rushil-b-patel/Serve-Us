@@ -245,7 +245,8 @@ export default function Product() {
           </div>
         </div>
       </div>
-      <ProductCard />
+
+      {/* <ProductCard /> */}
 
 
     </>
