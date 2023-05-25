@@ -1,0 +1,13 @@
+.items_nav{
+    background-color: brown;
+    color: blueviolet;
+}
+
+
+.nav_items:hover{
+    background-color: blueviolet  ;
+}
+.nav_items :active{
+    color: black !important;
+    background-color: blueviolet !important;
+}
