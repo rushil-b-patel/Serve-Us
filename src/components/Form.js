@@ -1,13 +1,9 @@
 import { useContext, useState } from 'react'
-import { FormContext } from './FormContext'
-import ExpertStats from './ExpertStats'
-// import CheckBox from './CheckBox'
-// import About from './About'
-
+import { FormContext } from '../FormContext'
 
 export const Data = {}
 
-export default function FormNew() {
+export default function Form() {
 
 
   // const [fname, setFname] = useState('');
@@ -113,7 +109,6 @@ export default function FormNew() {
 
   return (
     <>
-      <ExpertStats />
 
       <div className="isolate bg-white px-6 py-10 sm:py-10 lg:px-8">
         <div
@@ -212,8 +207,6 @@ export default function FormNew() {
               </div>
             </div>
 
-            {/* <SelectService /> */}
-
             <div className="sm:col-span-2">
               <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
                 Message
@@ -301,33 +294,6 @@ export default function FormNew() {
                 {/* <p class="font-bold">Rs. 2000/-</p> */}
               </div>
             </div>
-            
-            {/* <div class='mt-3'>
-            
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                id="Oil & Filter" 
-                type="checkbox" 
-                value="Oil & Filter" />
-                <label for="Oil & Filter"  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Oil & Filter</label>
-              </div>
-
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="Wheels Alignment" 
-                type="checkbox" 
-                value="Wheels Alignment" />
-                <label for="Wheels Alignment"  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Wheels Alignment/Balanced</label>
-              </div>
-
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                id="Coolent & other Fluids" 
-                type="checkbox" 
-                value="Coolent & other Fluids" />
-                <label for="Coolent & other Fluids"  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Coolant & other Fluids</label>
-              </div>
-            </div> */}
           </div>
 
           <div className="mt-6">

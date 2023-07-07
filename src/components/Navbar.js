@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Dialog, Disclosure, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, } from '@heroicons/react/24/outline'
 import { Link, NavLink } from 'react-router-dom'
-import './styles.css'
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -12,9 +11,9 @@ export default function Example() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to='/' className="-m-1.5 p-1.5 justify-content flex">
-            <span className="sr-only">Your Company</span>
-            <img className="h-8 mr-3 w-auto" src="https://www.codenticsoftware.com/img/logo.png" alt="" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Codentic Car Spa</span>
+            <span className="sr-only">Serve Us</span>
+            <img className="h-8 mr-3 w-auto" src="sulogo.png" alt="Serve Us" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Serve Us</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -36,17 +35,18 @@ export default function Example() {
             Services
           </NavLink>
 
-          <NavLink to='/Product' id="Product" className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
-            Product
+          <NavLink to='/Form' id="Product" className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
+              Hire
           </NavLink>
 
-          <NavLink to='/Form' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
-            Appointment
+          <NavLink to='/Jobs' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
+            Jobs
           </NavLink>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavLink to='/Contact' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
-            Contact <span aria-hidden="true">&rarr;</span>
+          <NavLink to='login' className="font-semibold text-white hover:text-zinc-500 aria-[current=page]:text-blue-400">
+            Log In 
+            {/* <span aria-hidden="true">&rarr;</span> */}
           </NavLink>
         </div>
       </nav>
@@ -67,7 +67,7 @@ export default function Example() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link to='/' className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">Serve Us</span>
               <img
                 className="h-8 w-auto"
                 src="https://www.codenticsoftware.com/img/logo.png"
@@ -102,25 +102,25 @@ export default function Example() {
                 >
                   Services
                 </NavLink>
-                <NavLink to='/Product'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Product
-                </NavLink>
                 <NavLink to='/Form'
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Appointment
+                  Hire
+                </NavLink>
+                <NavLink to='/Jobs'
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Jobs
                 </NavLink>
               </div>
               <div className="py-6">
-                <NavLink to='Contact'
+                <NavLink to='/login'
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold hover:text-zinc-500 aria-[current=page]:text-blue-400"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Contact
+                  Log In
                 </NavLink>
               </div>
             </div>
