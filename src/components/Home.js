@@ -1,5 +1,6 @@
 import React from 'react'
 import SubscribeLetter from './SubscribeLetter'
+import Login from './Login'
 
 export default function Home() {
   return (

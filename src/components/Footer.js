@@ -19,9 +19,9 @@ function Footer() {
                                 Gujarat, 388245.
                             </address> */}
                         </div>
-                        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
                             <div>
-                                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                                <h2 class="mb-6 text-sm font-semibold text-gray-900  dark:text-white">Resources</h2>
                                 <ul class="text-gray-600 dark:text-gray-400 font-medium">
                                     <li class="mb-4">
                                         <Link class="hover:underline">React</Link>
@@ -32,7 +32,18 @@ function Footer() {
                                 </ul>
                             </div>
                             <div>
-                                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                                <h2 class="mb-6 text-sm font-semibold text-gray-900 dark:text-white">Resources</h2>
+                                <ul class="text-gray-600 dark:text-gray-400 font-medium">
+                                    <li class="mb-4">
+                                        <Link class="hover:underline">React</Link>
+                                    </li>
+                                    <li>
+                                        <Link class="hover:underline">Tailwind CSS</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h2 class="mb-6 text-sm font-semibold text-gray-900 dark:text-white">Follow us</h2>
                                 <ul class="text-gray-600 dark:text-gray-400 font-medium">
                                     <li class="mb-4">
                                         <Link href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</Link>
@@ -43,7 +54,7 @@ function Footer() {
                                 </ul>
                             </div>
                             <div>
-                                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                                <h2 class="mb-6 text-sm font-semibold text-gray-900 dark:text-white">Legal</h2>
                                 <ul class="text-gray-600 dark:text-gray-400 font-medium">
                                     <li class="mb-4">
                                         <Link href="#" class="hover:underline">Privacy Policy</Link>
