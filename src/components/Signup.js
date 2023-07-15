@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Signup() {
-
+ 
     const [input, setInput] = useState({
         email: '',
         number :'',
@@ -94,7 +94,7 @@ function Signup() {
               placeholder="name@company.com"
               required
             />
-            {error.email && <span className='err'>{error.email}</span>}
+            {error.email && <span className="err text-red-500">{error.email}</span>}
           </div>
           <div>
             <label
@@ -114,7 +114,7 @@ function Signup() {
               placeholder="000000000"
               required
             />
-            {error.number && <span className='err'>{error.number}</span>}
+            {error.number && <span className="err text-red-500">{error.number}</span>}
           </div>
           <div>
             <label
@@ -134,19 +134,19 @@ function Signup() {
               class="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
               required
             />
-            {error.password && <span className='err'>{error.password}</span>}
+            {error.password && <span className="err text-red-500">{error.password}</span>}
           </div>
           <div>
             <label
-              for="password"
+              for="confirmPassword"
               class="block mb-2 text-sm font-medium text-black"
             >
               Confirm password
             </label>
             <input
               type="password"
-              name="confirmpassword"
-              id="confirmpassword"
+              name="confirmPassword"
+              id="confirmPassword"
               placeholder="•••••••••"
               value={input.confirmPassword}
               onChange={onInputChange}
@@ -154,7 +154,7 @@ function Signup() {
               class="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
               required
             />
-            {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
+            {error.confirmPassword && (<span className="err text-red-500">{error.confirmPassword}</span>)}
           </div>
           <div class="flex items-start">
             <div class="flex items-start">
@@ -167,29 +167,24 @@ function Signup() {
                   required
                 />
               </div>
-              <label
-                for="remember"
-                class="ml-2 text-sm font-medium text-black"
-              >
+              <label for="remember" class="ml-2 text-sm font-medium text-black">
                 Remember me
               </label>
             </div>
-            <a
-              href="#"
-              class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-            >
-              Forgot Password?
-            </a>
           </div>
-          <button
-            type="submit"
-            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Login to your account
-          </button>
+          
+            <button
+              type="submit"
+              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 my-5 text-center"
+            >
+            <Link to='/OTPVerification'>
+              Signup
+            </Link>
+            </button>
           <div class="text-sm font-medium text-black flex justify-between">
             Already registered?{" "}
-            <Link to='/login'
+            <Link
+              to="/login"
               class="text-blue-700 hover:underline dark:text-blue-500"
             >
               Sigin to your Account
@@ -198,7 +193,7 @@ function Signup() {
         </form>
       </div>
     </div>
-    )
+  );
 }
 
 export default Signup

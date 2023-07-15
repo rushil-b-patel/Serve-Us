@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Services from "./components/Services";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import OtpVerification from "./components/OtpVerification";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Form" element={<Form />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/OTPVerification" element={<OtpVerification />}></Route>
       </Routes>
       <Footer />
     </>

@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.otp_container > input {
+    background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+    width: 30% !important;
+    border-right: 1px solid #00000035;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    padding: 1.4rem 0;
+    border-radius: 2px;
+    /* border: 1px solid green; */
+}
+
+.otp_container > input:first-child{
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+}
+
+.otp_container > input:last-child{
+    border-right: 0;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
