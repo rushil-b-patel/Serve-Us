@@ -4,9 +4,9 @@ import ServiceCard from "./ServiceCard";
 function Services() {
   return (
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-10 z-10 relative">
-      <h1 className="font-bold text-3xl pb-8  ">Services</h1>
-
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <h1 className="font-bold text-3xl  ">Services</h1>
+      <p className="text-lg text-slate-500">Best Services at low cost efficient prices</p>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 p-8">
         <div>
           <ServiceCard
             name="Plumbing"
@@ -40,6 +40,12 @@ function Services() {
           />
         </div>
       </div>
+
+      <div>
+      <h1 className="font-bold text-3xl">Best Offers</h1>
+      <p className="text-lg text-slate-500">Hygienic & Single-use products | low-contact services</p>
+      </div>
+
     </div>
   );
 }

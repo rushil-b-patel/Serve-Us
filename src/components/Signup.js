@@ -74,7 +74,7 @@ function Signup() {
       <div class="w-full max-w-sm p-4 bg-slate-100 border-gray-700 rounded-lg shadow sm:p-6 md:p-8">
         <form class="space-y-6" action="">
           <h5 class="text-2xl font-medium text-center text-black">
-            Sign in to our platform
+            Sign up to our platform
           </h5>
           <div>
             <label
