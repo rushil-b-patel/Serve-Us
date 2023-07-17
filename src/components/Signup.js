@@ -1,73 +1,76 @@
-import React from 'react'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Signup() {
- 
-    const [input, setInput] = useState({
-        email: '',
-        number :'',
-        password:'',
-        confirmPassword:''
-    })
+  const [input, setInput] = useState({
+    email: "",
+    number: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-    const [error,setError] = useState({
-        email:'',
-        number:'',
-        password:'',
-        confirmPassword: ''
-    })
+  const [error, setError] = useState({
+    email: "",
+    number: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-    const onInputChange = e =>{
-        const { name, value } = e.target;
-        setInput(prev => ({
-            ...prev,[name]:value
-        }))
-        validateInput(e);
-    }
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    validateInput(e);
+  };
 
-    const validateInput = e =>{
-        let { name, value } = e.target
-        setError(prev => {
-            const stateObj = { ...prev, [name]: ""};
+  const validateInput = (e) => {
+    let { name, value } = e.target;
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: "" };
 
-            switch (name) {
-                case "email":
-                    if (!value) {
-                        stateObj[name] = "Please Enter your Email"
-                    }
-                    break;
+      switch (name) {
+        case "email":
+          if (!value) {
+            stateObj[name] = "Please Enter your Email";
+          }
+          break;
 
-                case "number":
-                    if (!value) {
-                        stateObj[name] = "Please Enter your Mobile Number"
-                    }
-                    break;
-                
-                case "password":
-                    if (!value) {
-                        stateObj[name] = "Please enter Password.";
-                    } else if (input.confirmPassword && value !== input.confirmPassword) {
-                        stateObj["confirmPassword"] = "Password and Confirm Password does not match.";
-                    } else {
-                        stateObj["confirmPassword"] = input.confirmPassword ? "" : error.confirmPassword;
-                    }
-                    break;
+        case "number":
+          if (!value) {
+            stateObj[name] = "Please Enter your Mobile Number";
+          }
+          break;
 
-                case "confirmPassword":
-                    if (!value) {
-                        stateObj[name] = "Please enter Confirm Password.";
-                    } else if (input.password && value !== input.password) {
-                        stateObj[name] = "Password and Confirm Password does not match.";
-                    }
-                    break;
-                
-                default:
-                    break;
-                }
-                return stateObj;
-        })
-    }
+        case "password":
+          if (!value) {
+            stateObj[name] = "Please enter Password.";
+          } else if (input.confirmPassword && value !== input.confirmPassword) {
+            stateObj["confirmPassword"] =
+              "Password and Confirm Password do not match.";
+          } else {
+            stateObj["confirmPassword"] = input.confirmPassword
+              ? ""
+              : error.confirmPassword;
+          }
+          break;
+
+        case "confirmPassword":
+          if (!value) {
+            stateObj[name] = "Please enter Confirm Password.";
+          } else if (input.password && value !== input.password) {
+            stateObj[name] = "Password and Confirm Password do not match.";
+          }
+          break;
+
+        default:
+          break;
+      }
+      return stateObj;
+    });
+  };
 
   return (
     <div className="bg-white py-10 flex justify-center items-center">
@@ -94,7 +97,9 @@ function Signup() {
               placeholder="name@company.com"
               required
             />
-            {error.email && <span className="err text-red-500">{error.email}</span>}
+            {error.email && (
+              <span className="err text-red-500">{error.email}</span>
+            )}
           </div>
           <div>
             <label
@@ -114,7 +119,9 @@ function Signup() {
               placeholder="000000000"
               required
             />
-            {error.number && <span className="err text-red-500">{error.number}</span>}
+            {error.number && (
+              <span className="err text-red-500">{error.number}</span>
+            )}
           </div>
           <div>
             <label
@@ -134,7 +141,9 @@ function Signup() {
               class="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
               required
             />
-            {error.password && <span className="err text-red-500">{error.password}</span>}
+            {error.password && (
+              <span className="err text-red-500">{error.password}</span>
+            )}
           </div>
           <div>
             <label
@@ -154,7 +163,9 @@ function Signup() {
               class="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
               required
             />
-            {error.confirmPassword && (<span className="err text-red-500">{error.confirmPassword}</span>)}
+            {error.confirmPassword && (
+              <span className="err text-red-500">{error.confirmPassword}</span>
+            )}
           </div>
           <div class="flex items-start">
             <div class="flex items-start">
@@ -172,22 +183,23 @@ function Signup() {
               </label>
             </div>
           </div>
-          
+
+          <Link to="/OTPVerification">
             <button
               type="submit"
               class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 my-5 text-center"
             >
-            <Link to='/OTPVerification'>
               Signup
-            </Link>
             </button>
+          </Link>
+
           <div class="text-sm font-medium text-black flex justify-between">
             Already registered?{" "}
             <Link
               to="/login"
               class="text-blue-700 hover:underline dark:text-blue-500"
             >
-              Sigin to your Account
+              Sign in to your Account
             </Link>
           </div>
         </form>
@@ -196,4 +208,4 @@ function Signup() {
   );
 }
 
-export default Signup
+export default Signup;
