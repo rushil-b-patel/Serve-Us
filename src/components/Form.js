@@ -1,11 +1,9 @@
-import { useContext, useState } from 'react'
-import { FormContext } from '../FormContext'
+import { useContext, useState } from "react";
+import { FormContext } from "../FormContext";
 
-export const Data = {}
+export const Data = {};
 
 export default function Form() {
-
-
   // const [fname, setFname] = useState('');
   // const [lname, setLname] = useState('');
   // const [email, setEmail] = useState('');
@@ -35,42 +33,42 @@ export default function Form() {
   const FnameChangeHandler = (event) => {
     // setFname(event.target.value);
     setInput({ ...input, fname: event.target.value });
-  }
+  };
 
   const LnameChangeHandler = (event) => {
     // setLname(event.target.value);
-    setInput({ ...input, lname: event.target.value })
-  }
+    setInput({ ...input, lname: event.target.value });
+  };
 
   const emailChangeHandler = (event) => {
     // setEmail(event.target.value);
-    setInput({ ...input, email: event.target.value })
-  }
+    setInput({ ...input, email: event.target.value });
+  };
 
   const numberChangeHandler = (event) => {
     // setNumber(event.target.value);
-    setInput({ ...input, number: event.target.value })
-  }
+    setInput({ ...input, number: event.target.value });
+  };
   const messageChangeHandler = (event) => {
     // setMessage(event.target.value);
-    setInput({ ...input, message: event.target.value })
-  }
+    setInput({ ...input, message: event.target.value });
+  };
 
   const dateChangeHandler = (event) => {
     // setDate(event.target.value);
-    setInput({ ...input, date: event.target.value })
-  }
+    setInput({ ...input, date: event.target.value });
+  };
 
-  const serviceChangeHandler = (event) =>{
-    if(event.target.checked){
+  const serviceChangeHandler = (event) => {
+    if (event.target.checked) {
       setIsChecked(true);
       console.log(isChecked);
-      setInput({ ...input, service: event.target.value })
+      setInput({ ...input, service: event.target.value });
     }
-  }
+  };
 
   const submitHandler = (event) => {
-    // const FName = fnameRef.current.value;      
+    // const FName = fnameRef.current.value;
     event.preventDefault();
 
     // const Data = {
@@ -85,10 +83,10 @@ export default function Form() {
 
     // console.log(Data);
     // console.log(input);
-    // props.onSaveData(Data);  
-    
+    // props.onSaveData(Data);
+
     if (input.fname && input.email && input.number)
-    setState((pre) => [...pre, input]);
+      setState((pre) => [...pre, input]);
     setInput({
       fname: "",
       lname: "",
@@ -96,7 +94,7 @@ export default function Form() {
       number: "",
       message: "",
       date: null,
-    })
+    });
     // setList((ls) => [...ls, Data])
     // setFname('');
     // setLname('');
@@ -109,23 +107,29 @@ export default function Form() {
 
   return (
     <>
-
       <div className="isolate bg-white px-6 py-10 sm:py-10 lg:px-8">
         <div
           className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
           aria-hidden="true"
-        >
-        </div>
+        ></div>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Drop us a Booking</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Drop us a Booking
+          </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Let the engine of the car spark..!
           </p>
         </div>
-        <form onSubmit={submitHandler} className="mx-auto mt-16 max-w-xl sm:mt-20">
+        <form
+          onSubmit={submitHandler}
+          className="mx-auto mt-16 max-w-xl sm:mt-20"
+        >
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div>
-              <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-semibold leading-6 text-gray-900"
+              >
                 First Name
               </label>
               <div className="mt-2.5">
@@ -143,7 +147,10 @@ export default function Form() {
               </div>
             </div>
             <div>
-              <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label
+                htmlFor="last-name"
+                className="block text-sm font-semibold leading-6 text-gray-900"
+              >
                 Last Name
               </label>
               <div className="mt-2.5">
@@ -208,7 +215,10 @@ export default function Form() {
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label
+                htmlFor="message"
+                className="block text-sm font-semibold leading-6 text-gray-900"
+              >
                 Message
               </label>
               <div className="mt-2.5">
@@ -219,7 +229,7 @@ export default function Form() {
                   onChange={messageChangeHandler}
                   rows={4}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue={''}
+                  defaultValue={""}
                 />
               </div>
             </div>
@@ -228,70 +238,110 @@ export default function Form() {
           <label className="block text-sm font-semibold leading-6 text-gray-900 mt-6">
             Select Services
           </label>
-          <div class='flex justify-evenly '>
-            <div class='mt-3 justify-start'>
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                      id="Transmission Service" 
-                      type="checkbox" 
-                      value="Transmission Service"
-                      onChange={serviceChangeHandler} />
-                <label for='Transmission Service' class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Transmission Service</label>
-                {/* <p class="font-bold">Rs. 1200/-</p> */}
+          <div className="flex justify-evenly ">
+            <div className="mt-3 justify-start">
+              <div className="flex items-center mb-4">
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  id="Transmission Service"
+                  type="checkbox"
+                  value="Transmission Service"
+                  onChange={serviceChangeHandler}
+                />
+                <label
+                  for="Transmission Service"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900"
+                >
+                  Transmission Service
+                </label>
+                {/* <p className="font-bold">Rs. 1200/-</p> */}
               </div>
 
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="Break Repair & Service" 
-                type="checkbox" 
-                value="Break Repair & Service" 
-                onChange={serviceChangeHandler} />
-                <label for="Break Repair & Service" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Break Repair & Service</label>
-                {/* <p class="font-bold">Rs. 2400/-</p> */}
+              <div className="flex items-center mb-4">
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  id="Break Repair & Service"
+                  type="checkbox"
+                  value="Break Repair & Service"
+                  onChange={serviceChangeHandler}
+                />
+                <label
+                  for="Break Repair & Service"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900"
+                >
+                  Break Repair & Service
+                </label>
+                {/* <p className="font-bold">Rs. 2400/-</p> */}
               </div>
 
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="Tyre & Wheel Service" 
-                type="checkbox" 
-                value="Tyre & Wheel Service" 
-                onChange={serviceChangeHandler} />
-                <label for="Tyre & Wheel Service" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Tyre & Wheel Service</label>
-                {/* <p class="font-bold">Rs. 900/-</p>  */}
+              <div className="flex items-center mb-4">
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  id="Tyre & Wheel Service"
+                  type="checkbox"
+                  value="Tyre & Wheel Service"
+                  onChange={serviceChangeHandler}
+                />
+                <label
+                  for="Tyre & Wheel Service"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900"
+                >
+                  Tyre & Wheel Service
+                </label>
+                {/* <p className="font-bold">Rs. 900/-</p>  */}
               </div>
             </div>
 
-            <div class='mt-3'>
-
-              <div class="flex items-center mb-4">
-                <input 
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="Paint & Dent Service" 
-                type="checkbox" 
-                value="Paint & Dent Service"
-                onChange={serviceChangeHandler} />
-                <label for="Paint & Dent Service" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Paint & Dent Service</label>
-                {/* <p class="font-bold">Rs. 2400/-</p> */}
+            <div className="mt-3">
+              <div className="flex items-center mb-4">
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  id="Paint & Dent Service"
+                  type="checkbox"
+                  value="Paint & Dent Service"
+                  onChange={serviceChangeHandler}
+                />
+                <label
+                  for="Paint & Dent Service"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900"
+                >
+                  Paint & Dent Service
+                </label>
+                {/* <p className="font-bold">Rs. 2400/-</p> */}
               </div>
 
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="Engine Service & Repair" 
-                type="checkbox" 
-                value="Engine Service & Repair" 
-                onChange={serviceChangeHandler} />
-                <label for="Engine Service & Repair"  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Engine Service & Repair</label>
-                {/* <p class="font-bold">Rs. 1500/-</p> */}
+              <div className="flex items-center mb-4">
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  id="Engine Service & Repair"
+                  type="checkbox"
+                  value="Engine Service & Repair"
+                  onChange={serviceChangeHandler}
+                />
+                <label
+                  for="Engine Service & Repair"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900"
+                >
+                  Engine Service & Repair
+                </label>
+                {/* <p className="font-bold">Rs. 1500/-</p> */}
               </div>
 
-              <div class="flex items-center mb-4">
-                <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="Performance Upgrade" 
-                type="checkbox" 
-                value="Performance Upgrade" 
-                onChange={serviceChangeHandler} />
-                <label for="Performance Upgrade"  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900">Performance Upgrade</label>
-                {/* <p class="font-bold">Rs. 2000/-</p> */}
+              <div className="flex items-center mb-4">
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  id="Performance Upgrade"
+                  type="checkbox"
+                  value="Performance Upgrade"
+                  onChange={serviceChangeHandler}
+                />
+                <label
+                  for="Performance Upgrade"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-900"
+                >
+                  Performance Upgrade
+                </label>
+                {/* <p className="font-bold">Rs. 2000/-</p> */}
               </div>
             </div>
           </div>
@@ -306,7 +356,6 @@ export default function Form() {
           </div>
         </form>
       </div>
-
     </>
-  )
+  );
 }
