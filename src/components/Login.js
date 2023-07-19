@@ -9,7 +9,7 @@ function Login() {
       <div className="w-full max-w-sm p-4 bg-slate-100 border-gray-700 rounded-lg shadow sm:p-6 md:p-8">
         <form className="space-y-6" action="" onSubmit={login}>
           <h5 className="text-2xl font-medium text-center text-black">
-            Please Login to continue
+            Sign in to continue
           </h5>
           <div>
             <label
@@ -70,9 +70,9 @@ function Login() {
           </div>
           <button
             type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
-            Login to your account
+            Sign in
           </button>
           <div className="text-sm font-medium text-black flex justify-between">
             Not registered?{" "}

@@ -10,15 +10,15 @@ function SubscribeLetter() {
     <div>
       <section className="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] rounded-2xl my-10">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
-          <p className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-blue-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800">
-            <Link to="services">
-              <span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
+          <p className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+            {/* <Link to="services"> */}
+              <span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-4">
                 New
               </span>{" "}
               <span className="text-sm font-medium">
                 Look at the services we provide across the globe
               </span>
-            </Link>
+            {/* </Link> */}
             <svg
               aria-hidden="true"
               className="ml-2 w-5 h-5"
@@ -69,7 +69,7 @@ function SubscribeLetter() {
               <button
                 type="submit"
                 onClick={submitButtonHandler}
-                className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white absolute right-2.5 bottom-3 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-4 py-2"
               >
                 Sign up
               </button>
