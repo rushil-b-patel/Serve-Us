@@ -62,7 +62,6 @@ function Login() {
               </label>
             </div>
             <a
-              href="#"
               className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
             >
               Forgot Password?
