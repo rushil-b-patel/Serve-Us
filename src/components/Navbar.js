@@ -94,7 +94,7 @@ export default function Example() {
                 <span className="sr-only">Serve Us</span>
                 <img
                   className="h-8 w-auto"
-                  src="https://www.codenticsoftware.com/img/logo.png"
+                  src="sulogo.png"
                   alt="Logo"
                 />
               </Link>
