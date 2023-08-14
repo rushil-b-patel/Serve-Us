@@ -62,7 +62,9 @@ export default function Example() {
           </NavLink>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavLink className="font-semibold text-white mr-5 underline hover:text-[#F5D547] ease-in duration-150">
+          <NavLink 
+          to='/ProfessionalLogin'
+          className="font-semibold text-white mr-5 underline hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150">
             Login as Professional
           </NavLink>
           <NavLink
@@ -129,7 +131,7 @@ export default function Example() {
               </div>
               <div className="pt-5">
                 <NavLink
-                  to="/login"
+                  to="/ProfessionalLogin"
                   className="font-semibold text-white mr-5 underline hover:text-[#F5D547] ease-in duration-150"
                   onClick={() => setMobileMenuOpen(false)}
                 >

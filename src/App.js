@@ -11,6 +11,8 @@ import AuthState from "./context/AuthState";
 import { ToastContainer, toast } from "react-toastify";
 import ServiceDescription from "./components/ServiceDescription";
 import ServiceProvider from "./components/ServiceProvider";
+import ProfessionalLogin from "./components/ProfessionalLogin";
+import ProfessionalSignup from "./components/ProfessionalSignup";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/OTPVerification" element={<OtpVerification />}></Route>
           <Route path="/ServiceDescription" element={<ServiceDescription />}></Route>
+          <Route path="/ProfessionalLogin" element={< ProfessionalLogin/>}></Route>
+          <Route path="/ProfessionalSignup" element={< ProfessionalSignup/>}></Route>
           <Route path="/ServiceProvider" element={<ServiceProvider />}></Route>
         </Routes>
         <Footer />
