@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
-function Signup() {
+function ProfessionalSignup() {
   const { sendOtp } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   // const history = useHistory();
@@ -11,8 +11,8 @@ function Signup() {
 
   const onSubmit = (e) => {
     console.log(e);
-    e.preventDefault(); // Add this line to prevent the default form submission
-    sendOtp(input); // Pass the event object to the signUp function
+    e.preventDefault();
+    sendOtp(input);
   };
 
   const [input, setInput] = useState({
@@ -20,6 +20,7 @@ function Signup() {
     number: "",
     password: "",
     confirmPassword: "",
+    fied:"",
   });
 
   const [error, setError] = useState({
@@ -27,6 +28,7 @@ function Signup() {
     number: "",
     password: "",
     confirmPassword: "",
+    field:"",
   });
 
   const onInputChange = (e) => {
@@ -46,13 +48,19 @@ function Signup() {
       switch (name) {
         case "email":
           if (!value) {
-            stateObj[name] = "Please Enter your Email";
+            stateObj[name] = "Please enter Email";
           }
           break;
 
         case "number":
           if (!value) {
-            stateObj[name] = "Please Enter your Mobile Number";
+            stateObj[name] = "Please enter Mobile Number";
+          }
+          break;
+
+        case "field":
+          if(!value){
+            stateObj[name]= 'Please select Profession';
           }
           break;
 
@@ -83,62 +91,94 @@ function Signup() {
       return stateObj;
     });
   };
-
   return (
     <div className="bg-white py-10 flex justify-center items-center">
-      <div className="w-full max-w-sm p-4 bg-slate-100 border-gray-700 rounded-lg shadow sm:p-6 md:p-8">
+      <div className="max-w-lg bg-slate-100 border-gray-700 rounded-lg shadow py-10 px-8">
         <form
           className="space-y-6"
           action=""
           //  onSubmit={onSubmit}
         >
           <h5 className="text-2xl font-medium text-center text-black">
-            Sign up to our platform
+            Sign up to find the work you love
           </h5>
-          <div>
-            <label
-              htmlFor="email"
-              className="block mb-2 text-sm font-medium text-black"
-            >
-              Your email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={input.email}
-              onChange={onInputChange}
-              onBlur={validateInput}
-              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
-              placeholder="name@company.com"
-              required
-            />
-            {error.email && (
-              <span className="err text-red-500">{error.email}</span>
-            )}
+          <div className="flex justify-between">
+            <div>
+              <label
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-black"
+              >
+                Your email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={input.email}
+                onChange={onInputChange}
+                onBlur={validateInput}
+                className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
+                placeholder="name@company.com"
+                required
+              />
+              {error.email && (
+                <span className="err text-sm text-red-500">{error.email}</span>
+              )}
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-black"
+              >
+                Your Mobile Number
+              </label>
+              <input
+                type="number"
+                name="number"
+                id="number"
+                value={input.number}
+                onChange={onInputChange}
+                onBlur={validateInput}
+                className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
+                placeholder="000000000"
+                required
+              />
+              {error.number && (
+                <span className="err text-sm text-red-500">{error.number}</span>
+              )}
+            </div>
           </div>
           <div>
             <label
-              htmlFor="email"
+              htmlFor="field"
               className="block mb-2 text-sm font-medium text-black"
             >
-              Your Mobile Number
+              Select Your Profession
             </label>
-            <input
-              type="number"
-              name="number"
-              id="number"
-              value={input.number}
+            <select
+              name="field"
+              id="field"
+              value={input.field}
               onChange={onInputChange}
               onBlur={validateInput}
-              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
-              placeholder="000000000"
+              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
               required
-            />
-            {error.number && (
-              <span className="err text-red-500">{error.number}</span>
+            >
+              <option value="">Select Field</option>
+              <option value="Plumber">Plumber</option>
+              <option value="Electrician">Electrician</option>
+              <option value="House Hold">House Hold</option>
+              <option value="Pest Control">Pest Control</option>
+              <option value="Hair Artist Women">Hair Artist (Women)</option>
+              <option value="Hair Artist Men">Hair Artist (Men)</option>
+              <option value="Painter">Painter</option>
+              <option value="Carpenters">Carpenter</option>
+            </select>
+            {error.field && (
+              <span className="err text-md text-red-500">{error.field}</span>
             )}
           </div>
+
           <div>
             <label
               htmlFor="password"
@@ -158,7 +198,7 @@ function Signup() {
               required
             />
             {error.password && (
-              <span className="err text-red-500">{error.password}</span>
+              <span className="err text-md text-red-500">{error.password}</span>
             )}
           </div>
           <div>
@@ -180,7 +220,9 @@ function Signup() {
               required
             />
             {error.confirmPassword && (
-              <span className="err text-red-500">{error.confirmPassword}</span>
+              <span className="err text-md text-red-500">
+                {error.confirmPassword}
+              </span>
             )}
           </div>
           <div className="flex items-start">
@@ -215,7 +257,7 @@ function Signup() {
           <div class="text-sm font-medium text-black flex justify-between">
             Already registered?{" "}
             <Link
-              to="/login"
+              to="/ProfessionalLogin"
               class="text-blue-700 hover:underline dark:text-blue-500"
             >
               Sigin to your Account
@@ -227,4 +269,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default ProfessionalSignup;

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
-function Login() {
+function ProfessionalLogin() {
   const { login } = useContext(AuthContext);
   return (
     <div className="bg-white py-10 flex justify-center items-center">
@@ -76,7 +76,7 @@ function Login() {
           <div className="text-sm font-medium text-black flex justify-between">
             Not registered?{" "}
             <Link
-              to="/signup"
+              to="/ProfessionalSignup"
               className="text-blue-700 hover:underline dark:text-blue-500"
             >
               Create account
@@ -88,4 +88,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ProfessionalLogin;
