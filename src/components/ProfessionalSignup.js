@@ -20,7 +20,9 @@ function ProfessionalSignup() {
     number: "",
     password: "",
     confirmPassword: "",
-    fied:"",
+    fied: "",
+    customField: "",
+    location: "",
   });
 
   const [error, setError] = useState({
@@ -28,7 +30,9 @@ function ProfessionalSignup() {
     number: "",
     password: "",
     confirmPassword: "",
-    field:"",
+    field: "",
+    customField: "",
+    location: "",
   });
 
   const onInputChange = (e) => {
@@ -59,8 +63,19 @@ function ProfessionalSignup() {
           break;
 
         case "field":
+          if (!value) {
+            stateObj[name] = "Please select your profession";
+          }
+          break;
+
+        case "customField":
           if(!value){
-            stateObj[name]= 'Please select Profession';
+            stateObj[name]="Please enter your profession"
+          }
+
+        case "location":
+          if(!value){
+            stateObj[name]= "Please enter your location";
           }
           break;
 
@@ -167,15 +182,61 @@ function ProfessionalSignup() {
               <option value="">Select Field</option>
               <option value="Plumber">Plumber</option>
               <option value="Electrician">Electrician</option>
-              <option value="House Hold">House Hold</option>
               <option value="Pest Control">Pest Control</option>
               <option value="Hair Artist Women">Hair Artist (Women)</option>
               <option value="Hair Artist Men">Hair Artist (Men)</option>
               <option value="Painter">Painter</option>
-              <option value="Carpenters">Carpenter</option>
+              <option value="Carpenter">Carpenter</option>
+              <option value="Other">Other</option>
             </select>
             {error.field && (
               <span className="err text-md text-red-500">{error.field}</span>
+            )}
+          </div>
+
+          {input.field === 'Other' && (
+            <div>
+            <label
+              htmlFor="customField"
+              className="block mb-2 text-sm font-medium text-black"
+            >
+              Enter Your Field
+            </label>
+            <input
+              type="text"
+              name="customField"
+              id="customField"
+              value={input.customField}
+              onChange={onInputChange}
+              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
+              placeholder="Enter your field"
+              required
+            />
+          </div>
+          )}
+          {error.customField && (
+                <span className="err text-sm text-red-500">{error.customField}</span>
+              )}
+          <div>
+            <label
+              htmlFor="location"
+              className="block mb-2 text-sm font-medium text-black"
+            >
+              Your Location
+            </label>
+            <input
+              type="text"
+              name="location"
+              id="location"
+              value={input.location}
+              onChange={onInputChange}
+              onBlur={validateInput}
+              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
+              placeholder="Enter your location"
+              required
+            />
+            {error.location && (
+              <span className="err text-sm text-red-500">{error.location}</span>
             )}
           </div>
 
