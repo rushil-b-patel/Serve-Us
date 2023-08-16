@@ -8,6 +8,51 @@ function ProfessionalSignup() {
   const [loading, setLoading] = useState(false);
   // const history = useHistory();
   const navigate = useNavigate();
+  const fetchCityName = async (latitude, longitude) => {
+    const apiKey = "pk.d3f74bc82b4883e52345f15f068a67be";
+    const apiUrl = `https://us1.locationiq.com/v1/reverse.php?key=${apiKey}&lat=${latitude}&lon=${longitude}&format=json`;
+
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      console.log(data); // Log the entire response for examination
+
+      if (data.address || data.address.city) {
+        const cityName = data.address.city;
+        const village = data.address.village;
+        setInput((prev) => ({
+          ...prev,
+          location: cityName,
+          village: village,
+        }));
+        console.log(village);
+      }
+    } catch (error) {
+      console.error("Error fetching city name:", error);
+    }
+  };
+
+  const fetchUserLocation = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchCityName(latitude, longitude);
+          // fetchCityName(22.554029, 72.948936);
+          setInput((prev) => ({
+            ...prev,
+            location: `${latitude}, ${longitude}`,
+          }));
+        },
+        (error) => {
+          console.error("Error getting location:", error.message);
+        }
+      );
+    } else {
+      console.error("Geolocation is not available in this browser.");
+    }
+  };
 
   const onSubmit = (e) => {
     console.log(e);
@@ -23,6 +68,7 @@ function ProfessionalSignup() {
     fied: "",
     customField: "",
     location: "",
+    village: "",
   });
 
   const [error, setError] = useState({
@@ -33,6 +79,7 @@ function ProfessionalSignup() {
     field: "",
     customField: "",
     location: "",
+    village: "",
   });
 
   const onInputChange = (e) => {
@@ -69,13 +116,13 @@ function ProfessionalSignup() {
           break;
 
         case "customField":
-          if(!value){
-            stateObj[name]="Please enter your profession"
+          if (!value) {
+            stateObj[name] = "Please enter your profession";
           }
 
         case "location":
-          if(!value){
-            stateObj[name]= "Please enter your location";
+          if (!value) {
+            stateObj[name] = "Please enter your location";
           }
           break;
 
@@ -194,50 +241,58 @@ function ProfessionalSignup() {
             )}
           </div>
 
-          {input.field === 'Other' && (
+          {input.field === "Other" && (
             <div>
-            <label
-              htmlFor="customField"
-              className="block mb-2 text-sm font-medium text-black"
-            >
-              Enter Your Field
-            </label>
-            <input
-              type="text"
-              name="customField"
-              id="customField"
-              value={input.customField}
-              onChange={onInputChange}
-              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
-              placeholder="Enter your field"
-              required
-            />
-          </div>
+              <label
+                htmlFor="customField"
+                className="block mb-2 text-sm font-medium text-black"
+              >
+                Enter Your Field
+              </label>
+              <input
+                type="text"
+                name="customField"
+                id="customField"
+                value={input.customField}
+                onChange={onInputChange}
+                className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
+                placeholder="Enter your field"
+                required
+              />
+            </div>
           )}
           {error.customField && (
-                <span className="err text-sm text-red-500">{error.customField}</span>
-              )}
-          <div>
-            <label
-              htmlFor="location"
-              className="block mb-2 text-sm font-medium text-black"
-            >
-              Your Location
-            </label>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              value={input.location}
-              onChange={onInputChange}
-              onBlur={validateInput}
-              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
-              placeholder="Enter your location"
-              required
-            />
-            {error.location && (
-              <span className="err text-sm text-red-500">{error.location}</span>
-            )}
+            <span className="err text-sm text-red-500">
+              {error.customField}
+            </span>
+          )}
+          <div className="flex justify-between">
+            <div>
+              <button
+                type="button"
+                className="bg-black text-white p-2.5 text-sm rounded-lg w-full"
+                onClick={fetchUserLocation}
+              >
+                Fetch My Location
+              </button>
+            </div>
+            <div>
+              <label
+                htmlFor="location"
+                className="block text-sm font-medium text-black"
+              ></label>
+              <input
+                type="text"
+                name="location"
+                id="location"
+                value={input.village}
+                // onChange={(e) => setCityName(e.target.value)}
+                onChange={onInputChange}
+                onBlur={validateInput}
+                className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                required
+              />
+            </div>
           </div>
 
           <div>

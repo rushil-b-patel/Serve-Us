@@ -21,15 +21,15 @@ function ServiceProvider() {
   return (
     <div className="bg-white py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow py-8">
-          <div class="flex flex-col items-center">
+        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow py-8">
+          <div className="flex flex-col items-center">
             <img
-              class="w-24 h-24 mb-1 rounded-full shadow-lg"
+              className="w-24 h-24 mb-1 rounded-full shadow-lg"
               src="Thor.jpg"
               alt="Name"usss
             />
-            <h5 class="text-xl font-medium text-black">Umang Patel</h5>
-            <div class="text-sm text-gray-500 bg-slate-200 p-1 rounded-lg m-2">Plumber</div>
+            <h5 className="text-xl font-medium text-black">Umang Patel</h5>
+            <div className="text-sm text-gray-500 bg-slate-200 p-1 rounded-lg m-2">Plumber</div>
 
             <div className="flex">
               <Rating
@@ -46,10 +46,10 @@ function ServiceProvider() {
             <div className="m-2 font-bold">
               Location : Anand
             </div>
-            <div class="flex space-x-3">
+            <div className="flex space-x-3">
               <a
                 href="#"
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200"
               >
                 Serve Us
               </a>
