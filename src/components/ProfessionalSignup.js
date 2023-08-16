@@ -165,7 +165,7 @@ function ProfessionalSignup() {
             Sign up to find the work you love
           </h5>
           <div className="flex justify-between">
-            <div>
+            <div className="px-1.5">
               <label
                 htmlFor="email"
                 className="block mb-2 text-sm font-medium text-black"
