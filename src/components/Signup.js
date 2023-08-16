@@ -212,11 +212,11 @@ function Signup() {
             Signup
             {/* </Link> : "Signup"} */}
           </button>
-          <div class="text-sm font-medium text-black flex justify-between">
+          <div className="text-sm font-medium text-black flex justify-between">
             Already registered?{" "}
             <Link
               to="/login"
-              class="text-blue-700 hover:underline dark:text-blue-500"
+              className="text-blue-700 hover:underline dark:text-blue-500"
             >
               Sigin to your Account
             </Link>
