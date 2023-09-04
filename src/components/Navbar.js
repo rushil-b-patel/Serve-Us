@@ -2,8 +2,14 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
-export default function Example() {
+export default function Navbar() {
+
+  const { authToken, user } = useContext(AuthContext);
+  const isAuthenticated = !!authToken;
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -62,17 +68,29 @@ export default function Example() {
           </NavLink>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavLink 
-          to='/ProfessionalLogin'
-          className="font-semibold text-white mr-5 underline hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150">
-            Login as Professional
-          </NavLink>
-          <NavLink
-            to="login"
-            className="font-semibold text-white hover:text-[#F7E1D7] aria-[current=page]:text-[#F7E1D7] ease-in duration-150"
-          >
-            Log In
-          </NavLink>
+        {isAuthenticated ? (
+            <>
+              <NavLink
+                to="/profile"
+                className="font-semibold text-white mr-5 hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
+              >
+                {user.firstName}
+              </NavLink>
+              <NavLink
+                to="/logout"
+                className="font-semibold text-white mr-5 hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
+              >
+                Logout
+              </NavLink>
+            </>
+          ) : (
+            <NavLink
+              to="/Login"
+              className="font-semibold text-white mr-5 underline hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
+            >
+              Login/Signup
+            </NavLink>
+          )}
         </div>
       </nav>
       <Dialog
@@ -131,18 +149,11 @@ export default function Example() {
               </div>
               <div className="pt-5">
                 <NavLink
-                  to="/ProfessionalLogin"
-                  className="font-semibold text-white mr-5 underline hover:text-[#F5D547] ease-in duration-150"
+                  to="/Login"
+                  className="font-semibold text-white mr-5 underline hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Login as Professional
-                </NavLink>
-                <NavLink
-                  to="/login"
-                  className="block py-3 font-semibold text-white hover:text-[#F7E1D7] aria-[current=page]:text-[#F7E1D7] ease-in duration-150"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Log In
+                  Login/Signup
                 </NavLink>
               </div>
             </div>

@@ -76,7 +76,7 @@ function Login() {
           <div className="text-sm font-medium text-black flex justify-between">
             Not registered?{" "}
             <Link
-              to="/signup"
+              to="/Signup"
               className="text-blue-700 hover:underline dark:text-blue-500"
             >
               Create account

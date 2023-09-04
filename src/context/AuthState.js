@@ -15,6 +15,9 @@ const AuthState = ({ children }) => {
   const [phoneNo, setPhoneNo] = useState("0000000000");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [service, setService] = useState("");
+  const [location, setLocation] = useState("");
+  
   //   const [user, setUser] = useState(() =>
   //     localStorage.getItem("authToken")
   //       ? jwt_decode(localStorage.getItem("authToken"))["username"]
@@ -76,6 +79,11 @@ const AuthState = ({ children }) => {
         }),
       }
     );
+
+    const ProfessionalSignup = async (input) => {
+
+    }
+
     let data = await response.json();
     console.log(data);
     if (data.success) {
