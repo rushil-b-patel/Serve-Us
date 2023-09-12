@@ -1,61 +1,79 @@
-import React from "react";
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
+import React from 'react';
+import ServiceProviderCard from './ServiceProviderCard';
+import { useLocation } from 'react-router-dom';
 
-const labels = {
-  0.5: 'Useless',
-  1: 'Useless+',
-  1.5: 'Poor',
-  2: 'Poor+',
-  2.5: 'Ok',
-  3: 'Ok+',
-  3.5: 'Good',
-  4: 'Good+',
-  4.5: 'Excellent',
-  5: 'Excellent+',
-};
+const serviceProvidersData = [
+  {
+    id: 1,
+    services: ['Plumbing'], 
+    name: "John's Plumbing",
+    price: "Rs.599",
+    time: "01:50:30",
+    rating: "5.0",
+    title: "Tap & Tour",
+    description: 'Experienced plumbing services for your home.',
+    image: 'https://content.jdmagicbox.com/comp/def_content/plumbing-contractors/4-plumbing-contractors-10-d3qlx.jpg?clr=',
+  },
+  {
+    id: 2,
+    services: ['Electrical'], 
+    name: 'ABC Electricians',
+    price:"Rs.599",
+    time: "",
+    rating: "",
+    title: "",
+    description: 'Professional electrical services at your doorstep.',
+    image: 'abc-electricians.jpg',
+  },
+  {
+    id: 3,
+    services: ['Home Repairs'], 
+    name: 'Home Repair Pros',
+    price:"Rs.599",
+    time: "",
+    rating: "",
+    title: "",
+    description: 'We fix it all - from leaks to broken appliances.',
+    image: 'home-repair-pros.jpg',
+  },
+  {
+    id: 4,
+    services: ['Pest Control'], 
+    name: 'Pest Control Experts',
+    price:"Rs.599",
+    time: "",
+    rating: "",
+    title: "",
+    description: 'Effective pest control solutions for a pest-free home.',
+    image: 'pest-control-experts.jpg',
+  },
+];
 
 function ServiceProvider() {
-    const value=3.5;
-  return (
-    <div className="bg-white py-10">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow py-8">
-          <div className="flex flex-col items-center">
-            <img
-              className="w-24 h-24 mb-1 rounded-full shadow-lg"
-              src="Thor.jpg"
-              alt="Name"usss
-            />
-            <h5 className="text-xl font-medium text-black">Umang Patel</h5>
-            <div className="text-sm text-gray-500 bg-slate-200 p-1 rounded-lg m-2">Plumber</div>
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const selectedService = queryParams.get('service');
 
-            <div className="flex">
-              <Rating
-                name="text-feedback"
-                value={value}
-                readOnly
-                precision={0.5}
-                emptyIcon={
-                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                }
-              />
-              <Box className="font-semibold" sx={{ ml: 2 }}>{labels[value]}</Box>
-                </div>
-            <div className="m-2 font-bold">
-              Location : Anand
-            </div>
-            <div className="flex space-x-3">
-              <a
-                href="#"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200"
-              >
-                Serve Us
-              </a>
-            </div>
+  const filteredServiceProviders = serviceProvidersData.filter((provider) =>
+    provider.services.includes(selectedService)
+  );
+
+  return (
+    <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-10 z-10 relative">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 p-8">
+        {filteredServiceProviders.map((provider) => (
+          <div key={provider.id}>
+            <ServiceProviderCard
+              name={provider.name}
+              description={provider.description}
+              image={provider.image}
+              price={provider.price}
+              time={provider.time}
+              rating={provider.rating}
+              title={provider.title}
+            />
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );

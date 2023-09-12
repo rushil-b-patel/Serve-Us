@@ -1,8 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 function Login() {
+
+  const [userType, setUserType ] = useState("");
+
+  const onInputChange = (e) => {
+    setUserType(e.target.value);
+  };
+
+  const sigin = () =>{
+    console.log(userType);
+  }
+
+
   const { login } = useContext(AuthContext);
   return (
     <div className="bg-white py-10 flex justify-center items-center">
@@ -11,6 +23,17 @@ function Login() {
           <h5 className="text-2xl font-medium text-center text-black">
             Sign in to continue
           </h5>
+          <select
+            name="userType"
+            id="userType"
+            value={userType}
+            onChange={onInputChange}
+            className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            required
+          >
+            <option value="customer">Customer</option>
+            <option value="service_provider">Register As Professional</option>
+          </select>
           <div>
             <label
               htmlFor="email"
@@ -68,6 +91,7 @@ function Login() {
             </a>
           </div>
           <button
+          onClick={sigin}
             type="submit"
             className="w-full text-white bg-black hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
@@ -78,7 +102,7 @@ function Login() {
             <Link
               to="/Signup"
               className="text-blue-700 hover:underline dark:text-blue-500"
-            >
+            > 
               Create account
             </Link>
           </div>

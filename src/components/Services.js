@@ -1,6 +1,7 @@
 import React from "react";
-import ServiceCard from "./ServiceCard";
 import ServiceCardPrice from "./ServiceCardPrice";
+import { Link } from "react-router-dom";
+import ServiceCard from "./ServiceCard";
 
 function Services() {
   return (
@@ -9,38 +10,46 @@ function Services() {
       <p className="font-serif text-lg text-slate-500">
         Best Services at low cost efficient prices
       </p>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 p-8">
-        <div>
-          <ServiceCard
-            name="Plumbing"
-            description=" Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
-            link="Link"
-            image="plumbing.png"
-          />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 p-8">
+        <div className="mb-4">
+          <Link to={`/ServiceProvider?service=Plumbing`} className="block">
+            <ServiceCard
+              name="Plumbing"
+              description="Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
+              link="Link"
+              // image=""
+            />
+          </Link>
         </div>
-        <div>
-          <ServiceCard
-            name="AC/Appliances"
-            description=" Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
-            link="Link"
-            image="aircondition.png"
-          />
+        <div className="mb-4">
+          <Link to={`/ServiceProvider?service=Electrical`} className="block">
+            <ServiceCard
+              name="AC/Appliances"
+              description="Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
+              link="Link"
+              // image="aircondition.png"
+            />
+          </Link>
         </div>
-        <div>
-          <ServiceCard
-            name="Home Repairs"
-            description=" Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
-            link="Link"
-            image="homerepair.png"
-          />
+        <div className="mb-4">
+          <Link to={`/ServiceProvider?service=Home Repairs`} className="block">
+            <ServiceCard
+              name="Home Repairs"
+              description="Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
+              link="Link"
+              // image="homerepair.png"
+            />
+          </Link>
         </div>
-        <div>
-          <ServiceCard
-            name="Pest Control"
-            description=" Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
-            link="Link"
-            image="pest.png"
-          />
+        <div className="mb-4">
+          <Link to={`/ServiceProvider?service=Pest Control`} className="block">
+            <ServiceCard
+              name="Pest Control"
+              description="Flow with Confidence, Your Trusted Plumbing Experts Plumbing Solutions that Keep Things Running Smoothly"
+              link="Link"
+              // image="pest.png"
+            />
+          </Link>
         </div>
       </div>
 

@@ -24,7 +24,7 @@ function Signup() {
         const location = villageName || cityName || county;
         setInput((prev) => ({
           ...prev,
-          location
+          location,
         }));
         console.log(location);
         console.log(cityName);
@@ -63,8 +63,9 @@ function Signup() {
   };
 
   const [input, setInput] = useState({
+    userType: "",
     firstName: "",
-    lastName:"",
+    lastName: "",
     email: "",
     number: "",
     password: "",
@@ -75,14 +76,14 @@ function Signup() {
 
   const [error, setError] = useState({
     firstName: "",
-    lastName :"",
+    lastName: "",
     email: "",
     number: "",
     password: "",
     confirmPassword: "",
     field: "",
     customField: "",
-    location: ""
+    location: "",
   });
 
   const onInputChange = (e) => {
@@ -100,7 +101,6 @@ function Signup() {
       const stateObj = { ...prev, [name]: "" };
 
       switch (name) {
-
         case "firstName":
           if (!value) {
             stateObj[name] = "Please enter First Name";
@@ -173,14 +173,22 @@ function Signup() {
   return (
     <div className="bg-white py-10 flex justify-center items-center">
       <div className="max-w-lg bg-slate-100 border-gray-700 rounded-lg shadow py-10 px-8">
-        <form
-          className="space-y-6"
-          action=""
-           onSubmit={onSubmit}
-        >
+        <form className="space-y-6" action="" onSubmit={onSubmit}>
           <h5 className="text-2xl font-medium text-center text-black">
             Sign up to find the work you love
           </h5>
+          <select
+            name="userType"
+            id="userType"
+            value={input.userType}
+            onChange={onInputChange}
+            onBlur={validateInput}
+            className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            required
+          >
+            <option value="customer">Customer</option>
+            <option value="service_provider">Register As Professional</option>
+          </select>
           <div className="lg:flex justify-between">
             <div>
               <label
@@ -201,7 +209,9 @@ function Signup() {
                 required
               />
               {error.firstName && (
-                <span className="err text-sm text-red-500">{error.firstName}</span>
+                <span className="err text-sm text-red-500">
+                  {error.firstName}
+                </span>
               )}
             </div>
             <div>
@@ -223,7 +233,9 @@ function Signup() {
                 required
               />
               {error.lastName && (
-                <span className="err text-sm text-red-500">{error.lastName}</span>
+                <span className="err text-sm text-red-500">
+                  {error.lastName}
+                </span>
               )}
             </div>
           </div>
@@ -273,6 +285,7 @@ function Signup() {
               )}
             </div>
           </div>
+          {input.userType === "service_provider" && (
           <div>
             <label
               htmlFor="field"
@@ -303,7 +316,7 @@ function Signup() {
               <span className="err text-md text-red-500">{error.field}</span>
             )}
           </div>
-
+          )}
           {input.field === "Other" && (
             <div>
               <label
@@ -427,7 +440,7 @@ function Signup() {
           </div>
 
           <button
-          to='/OtpVerification'
+            to="/OtpVerification"
             type="submit"
             className="w-full text-white bg-black hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 my-5 text-center"
             onClick={onSubmit}

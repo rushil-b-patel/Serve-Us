@@ -6,10 +6,11 @@ import Home from "./components/Home";
 import Services from "./components/Services";
 import OtpVerification from "./components/OtpVerification";
 import AuthState from "./context/AuthState";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ServiceProvider from "./components/ServiceProvider";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ServiceProviderCard from "./components/ServiceProviderCard";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/Login" element={< Login/>}></Route>
           <Route path="/Signup" element={< Signup/>}></Route>
           <Route path="/ServiceProvider" element={<ServiceProvider />}></Route>
+          <Route path="/ServiceProviderCard" element={<ServiceProviderCard />}></Route>
         </Routes>
         <Footer />
       </AuthState>
