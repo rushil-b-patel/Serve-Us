@@ -1,6 +1,8 @@
 import React from 'react';
 import ServiceProviderCard from './ServiceProviderCard';
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import Cart from './Cart';
 
 const serviceProvidersData = [
   {
@@ -11,6 +13,17 @@ const serviceProvidersData = [
     time: "01:50:30",
     rating: "5.0",
     title: "Tap & Tour",
+    description: 'Experienced plumbing services for your home.',
+    image: 'https://content.jdmagicbox.com/comp/def_content/plumbing-contractors/4-plumbing-contractors-10-d3qlx.jpg?clr=',
+  },
+  {
+    id: 6,
+    services: ['Plumbing'], 
+    name: "Rushil's Plumbing",
+    price: "Rs.799",
+    time: "01:50:30",
+    rating: "4.5",
+    title: "Patel Plumbers",
     description: 'Experienced plumbing services for your home.',
     image: 'https://content.jdmagicbox.com/comp/def_content/plumbing-contractors/4-plumbing-contractors-10-d3qlx.jpg?clr=',
   },
@@ -58,6 +71,27 @@ function ServiceProvider() {
     provider.services.includes(selectedService)
   );
 
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (service) => {
+    setCart([...cart, service]);
+  };
+
+  const removeFromCart = (service) => {
+    const updatedCart = cart.filter((item) => item.id !== service.id);
+    setCart(updatedCart);
+  };
+
+  const updateQuantity = (serviceId, newQuantity) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === serviceId) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  };
+
   return (
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-10 z-10 relative">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 p-8">
@@ -71,9 +105,13 @@ function ServiceProvider() {
               time={provider.time}
               rating={provider.rating}
               title={provider.title}
+              addToCart={() => addToCart(provider)}
             />
           </div>
         ))}
+      </div>
+      <div className="md:w-1/2 mx-auto">
+        <Cart cartItems={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity}/>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SubscribeLetter from './SubscribeLetter';
 
 export default function Home() {

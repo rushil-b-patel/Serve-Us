@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
@@ -16,7 +16,6 @@ import ServiceProviderCard from "./components/ServiceProviderCard";
 function App() {
   return (
     <>
-      {/* <Router> */}
       <AuthState>
         <ToastContainer
           position="bottom-right"
@@ -43,7 +42,6 @@ function App() {
         </Routes>
         <Footer />
       </AuthState>
-      {/* </Router> */}
     </>
   );
 }

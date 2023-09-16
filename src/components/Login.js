@@ -84,11 +84,11 @@ function Login() {
                 Remember me
               </label>
             </div>
-            <a
+            <p
               className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
             >
               Forgot Password?
-            </a>
+            </p>
           </div>
           <button
           onClick={sigin}
@@ -106,7 +106,22 @@ function Login() {
               Create account
             </Link>
           </div>
+          <div className="flex items-center mt-4">
+            <div className="w-full border-t border-gray-300" />
+            <p className="px-4 text-gray-600">Or</p>
+            <div className="w-full border-t border-gray-300" />
+          </div>
         </form>
+        <button
+            className="w-full mt-4 flex items-center justify-center bg-white hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-400"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+              alt="Google Logo"
+              className="w-6 h-6 mr-2"
+            />
+            Sign in with Google
+          </button>
       </div>
     </div>
   );
