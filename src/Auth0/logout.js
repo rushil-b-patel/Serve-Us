@@ -6,7 +6,7 @@ const LogoutButton = () => {
 
   return (
     <button
-      className="font-semibold text-black mr-5 underline hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
+      className="font-semibold text-black mr-5"
       onClick={() =>
         logout({ logoutParams: { returnTo: window.location.origin } })
       }

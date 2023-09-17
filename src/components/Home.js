@@ -1,5 +1,6 @@
 import React from 'react';
 import SubscribeLetter from './SubscribeLetter';
+import { User, useAuth0 } from '@auth0/auth0-react';
 
 export default function Home() {
 
@@ -18,11 +19,13 @@ export default function Home() {
   // const fetchUserLocation = () => {
   // };
 
+  const {user} = useAuth0();
+
   return (
     <div className="bg-white py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-bold text-black mb-8">
-          Welcome to Urban Services
+          Welcome {user.name} to Urban Services
         </h2>
       </div>
 
