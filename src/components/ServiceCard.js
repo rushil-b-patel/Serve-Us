@@ -1,25 +1,31 @@
-import { Card, CardHeader, CardBody, CardFooter, Typography, Button, } from "@material-tailwind/react";
+import React from "react";
 
-export default function ServiceCard(service) {
+function ServiceCard(service) {
   return (
-    <Card className="mt-6 w-96">
-      <CardHeader color="blue-gray" className="relative h-56">
-        <img
-          src={service.image}
-          alt={service.name}
-        />
-      </CardHeader>
-      <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
-            {service.name}
-        </Typography>
-        <Typography>
-          {service.description}
-        </Typography>
-      </CardBody>
-      <CardFooter className="pt-0">
-        <Button>See More</Button>
-      </CardFooter>
-    </Card>
+    <div className="group relative block bg-black rounded">
+      <img
+        alt={service.name}
+        src={service.image}
+        className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+      />
+
+      <div className="relative p-4 sm:p-6 lg:p-8">
+        <p className="text-sm font-medium uppercase tracking-widest text-yellow-500">
+          {service.title}
+        </p>
+
+        <p className="text-xl font-bold text-white sm:text-2xl">{service.name}</p>
+
+        <div className="mt-32 sm:mt-48 lg:mt-64">
+          <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+            <p className="text-sm text-white">
+              {service.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
+
+export default ServiceCard;

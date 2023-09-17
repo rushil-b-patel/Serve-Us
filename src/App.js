@@ -40,7 +40,7 @@ function App() {
           <Route path="/Signup" element={< Signup/>}></Route>
           <Route path="/ServiceProvider" element={<ServiceProvider />}></Route>
           <Route path="/ServiceProviderCard" element={<ServiceProviderCard />}></Route>
-          <Route path="/Path" element={<Profile />}></Route>
+          <Route path="/Profile" element={<Profile />}></Route>
         </Routes>
         <Footer />
       </AuthState>
