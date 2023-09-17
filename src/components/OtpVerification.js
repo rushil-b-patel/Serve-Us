@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import OTPInput, { ResendOTP } from "otp-input-react";
+import OTPInput from "otp-input-react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 

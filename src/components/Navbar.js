@@ -2,20 +2,16 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
+// import { useContext } from "react";
+// import AuthContext from "../context/AuthContext";
 import LoginButton from "../Auth0/login";
-import LogoutButton from "../Auth0/logout";
-import Profile from "../Auth0/profile";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Navbar() {
-  const { authToken, user } = useContext(AuthContext);
+  // const { authToken, user } = useContext(AuthContext);
   // const isAuthenticated = !!authToken;
-  const { isAuthenticated } = useAuth0();
-
+  const { user, isAuthenticated } = useAuth0();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
 
   return (
     <header className="bg-black">
@@ -73,7 +69,16 @@ export default function Navbar() {
           </NavLink>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          { isAuthenticated ? ( <LogoutButton /> && <Profile />) : (<LoginButton />) }
+          { isAuthenticated ? (
+          <div className="flex items-center">
+          <img
+            className="h-8"
+            src={user.picture}
+            alt={user.name}
+          />
+          <span className="ml-2 text-white font-semibold cursor-pointer hover:text-[#F5D547] ease-in duration-150">{user.name}</span>
+        </div>
+          ) : (<LoginButton />) }
         </div>
       </nav>
       <Dialog

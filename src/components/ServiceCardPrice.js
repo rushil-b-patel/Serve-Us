@@ -4,19 +4,19 @@ function ServiceCardPrice(props) {
   return (
     <div>
       <div className="w-full max-w-sm bg-white border rounded-lg shadow">
-        <a>
+        <p>
           <img
             className="p-5 pb-0 rounded-t-lg"
             src={props.image}
             alt={props.image}
           />
-        </a>
+        </p>
         <div className="px-5 py-5 ">
-          <a>
+          <p>
             <h5 className="text-xl font-semibold tracking-tight text-black">
               {props.name}
             </h5>
-          </a>
+          </p>
           <div className="flex items-center justify-between pt-5">
             <span className="text-2xl font-bold text-black">
               {props.price}

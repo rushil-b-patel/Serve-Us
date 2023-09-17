@@ -11,6 +11,7 @@ import ServiceProvider from "./components/ServiceProvider";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ServiceProviderCard from "./components/ServiceProviderCard";
+import Profile from "./Auth0/profile";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/Signup" element={< Signup/>}></Route>
           <Route path="/ServiceProvider" element={<ServiceProvider />}></Route>
           <Route path="/ServiceProviderCard" element={<ServiceProviderCard />}></Route>
+          <Route path="/Path" element={<Profile />}></Route>
         </Routes>
         <Footer />
       </AuthState>
