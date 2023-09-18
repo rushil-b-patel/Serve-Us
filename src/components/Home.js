@@ -22,10 +22,10 @@ export default function Home() {
   const {user} = useAuth0();
 
   return (
-    <div className="bg-white py-10">
+    <div className="bg-white py-10 min-h-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-bold text-black mb-8">
-          Welcome {user.name} to Urban Services
+          Welcome {user?.name} to Urban Services
         </h2>
       </div>
 

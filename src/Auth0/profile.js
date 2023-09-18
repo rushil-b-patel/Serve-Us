@@ -10,7 +10,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="bg-white py-10 mx-auto max-w-7xl px-6 lg:px-8 items-center min-h-fit">
+    <div className="bg-white py-10 mx-auto max-w-7xl px-6 lg:px-8 items-center min-h-screen">
       <img className="h-18 mb-4" src={user.picture} alt={user.name} />
       <div className="text-black font-semibold text-xl">Name : {user.name}</div>
       <div className="text-black font-semibold text-xl">
