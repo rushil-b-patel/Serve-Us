@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
@@ -6,16 +6,17 @@ import Home from "./components/Home";
 import Services from "./components/Services";
 import OtpVerification from "./components/OtpVerification";
 import AuthState from "./context/AuthState";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ServiceProvider from "./components/ServiceProvider";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ServiceProviderCard from "./components/ServiceProviderCard";
+import Profile from "./Auth0/profile";
 
 
 function App() {
   return (
     <>
-      {/* <Router> */}
       <AuthState>
         <ToastContainer
           position="bottom-right"
@@ -38,10 +39,11 @@ function App() {
           <Route path="/Login" element={< Login/>}></Route>
           <Route path="/Signup" element={< Signup/>}></Route>
           <Route path="/ServiceProvider" element={<ServiceProvider />}></Route>
+          <Route path="/ServiceProviderCard" element={<ServiceProviderCard />}></Route>
+          <Route path="/Profile" element={<Profile />}></Route>
         </Routes>
         <Footer />
       </AuthState>
-      {/* </Router> */}
     </>
   );
 }

@@ -1,32 +1,41 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React from "react";
+import { motion } from "framer-motion";
 
-const CarouselComp = (props) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+const Carousel = () => {
+  const slides = [
+    {
+      id: 1,
+      image: "Hulk.jpg",
+      caption: "Slide 1",
+    },
+    {
+      id: 2,
+      image: "Cap.jpg",
+      caption: "Slide 2",
+    },
+    {
+      id: 3,
+      image: "IronMan.jpg",
+      caption: "Slide 3",
+    },
+  ];
 
   return (
-    <div className="w-full max-w-screen-lg mx-auto">
-      <Slider {...settings}>
-        <div className="px-4">
-          <img src={props.image1} alt={props.service1} className="w-full h-64 object-cover" />
-        </div>
-        <div className="px-4">
-          <img src={props.image2} alt={props.service2} className="w-full h-64 object-cover" />
-        </div>
-        <div className="px-4">
-          <img src={props.image3} alt={props.service3} className="w-full h-64 object-cover" />
-        </div>
-      </Slider>
+    <div className="carousel">
+      {slides.map((slide) => (
+        <motion.div
+          key={slide.id}
+          className="slide"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <img src={slide.image} alt={slide.caption} />
+          <div className="caption">{slide.caption}</div>
+        </motion.div>
+      ))}
     </div>
   );
 };
 
-export default CarouselComp;
+export default Carousel;

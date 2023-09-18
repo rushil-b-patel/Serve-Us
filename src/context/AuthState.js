@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AuthContext from "./AuthContext";
 // import jwt from "jwt-decode";
-import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AuthState = ({ children }) => {
   const navigate = useNavigate();
@@ -15,8 +14,8 @@ const AuthState = ({ children }) => {
   const [phoneNo, setPhoneNo] = useState("0000000000");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [service, setService] = useState("");
-  const [location, setLocation] = useState("");
+  // const [service, setService] = useState("");
+  // const [location, setLocation] = useState("");
   
   //   const [user, setUser] = useState(() =>
   //     localStorage.getItem("authToken")
@@ -80,9 +79,9 @@ const AuthState = ({ children }) => {
       }
     );
 
-    const ProfessionalSignup = async (input) => {
+    // const ProfessionalSignup = async (input) => {
 
-    }
+    // }
 
     let data = await response.json();
     console.log(data);

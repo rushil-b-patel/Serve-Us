@@ -1,16 +1,28 @@
 import React from "react";
 
-function ServiceCard(props) {
+function ServiceCard(service) {
   return (
-    <div>
-      <div className="p-6 bg-white border rounded-lg shadow">
-        <img className="h-10 mr-3 mb-5 w-auto" src={props.image} alt={props.name} />
-        <a href="#" target="_blank">
-          <h5 className="mb-2 text-2xl font-semibold tracking-tight text-black">
-            {props.name}
-          </h5>
-        </a>
-        <p className="font-normal text-black">{props.description}</p>
+    <div className="group relative block bg-black rounded">
+      <img
+        alt={service.name}
+        src={service.image}
+        className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+      />
+
+      <div className="relative p-4 sm:p-6 lg:p-8">
+        <p className="text-sm font-medium uppercase tracking-widest text-yellow-500">
+          {service.title}
+        </p>
+
+        <p className="text-xl font-bold text-white sm:text-2xl">{service.name}</p>
+
+        <div className="mt-32 sm:mt-48 lg:mt-64">
+          <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+            <p className="text-sm text-white">
+              {service.description}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

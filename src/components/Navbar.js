@@ -2,14 +2,15 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
+// import { useContext } from "react";
+// import AuthContext from "../context/AuthContext";
+import LoginButton from "../Auth0/login";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Navbar() {
-
-  const { authToken, user } = useContext(AuthContext);
-  const isAuthenticated = !!authToken;
-
+  // const { authToken, user } = useContext(AuthContext);
+  // const isAuthenticated = !!authToken;
+  const { user, isAuthenticated } = useAuth0();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -68,28 +69,17 @@ export default function Navbar() {
           </NavLink>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-        {isAuthenticated ? (
-            <>
-              <NavLink
-                to="/profile"
-                className="font-semibold text-white mr-5 hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
-              >
-                {user.firstName}
-              </NavLink>
-              <NavLink
-                to="/logout"
-                className="font-semibold text-white mr-5 hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
-              >
-                Logout
-              </NavLink>
-            </>
+          {isAuthenticated ? (
+            <div className="flex items-center">
+              <img className="h-8" src={user.picture} alt={user.name} />
+              <Link to="/Profile">
+                <span className="ml-2 text-white font-semibold cursor-pointer hover:text-[#F5D547] ease-in duration-150">
+                  {user.name}
+                </span>
+              </Link>
+            </div>
           ) : (
-            <NavLink
-              to="/Login"
-              className="font-semibold text-white mr-5 underline hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
-            >
-              Login/Signup
-            </NavLink>
+            <LoginButton />
           )}
         </div>
       </nav>
