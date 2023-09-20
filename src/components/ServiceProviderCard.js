@@ -4,7 +4,7 @@ function ServiceProviderCard(service) {
   
   return (
     <div className="flex justify-center items-center">
-      <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+      <div className="max-w-sm bg-white px-6 pt-6 pb-2 mb-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
         <h3 className="mb-3 text-xl font-bold text-indigo-600">
           {service.name}
         </h3>
