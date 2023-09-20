@@ -138,13 +138,18 @@ export default function Navbar() {
                 </NavLink>
               </div>
               <div className="pt-5">
-                <NavLink
-                  to="/Login"
-                  className="font-semibold text-white mr-5 underline hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Login/Signup
-                </NavLink>
+                {isAuthenticated ? (
+                  <div className="flex items-center">
+                    <img className="h-8" src={user.picture} alt={user.name} />
+                    <Link to="/Profile">
+                      <span className="ml-2 text-white font-semibold cursor-pointer hover:text-[#F5D547] ease-in duration-150">
+                        {user.name}
+                      </span>
+                    </Link>
+                  </div>
+                ) : (
+                  <LoginButton />
+                )}
               </div>
             </div>
           </div>

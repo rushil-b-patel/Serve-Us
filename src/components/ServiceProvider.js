@@ -94,7 +94,8 @@ function ServiceProvider() {
 
   return (
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-10 z-10 relative">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 p-8">
+      <div className="md:flex">
+        <div className="md:w-1/2">
         {filteredServiceProviders.map((provider) => (
           <div key={provider.id}>
             <ServiceProviderCard
@@ -109,9 +110,10 @@ function ServiceProvider() {
             />
           </div>
         ))}
-      </div>
-      <div className="md:w-1/2 mx-auto">
+        </div>
+      <div className="md:w-1/3 mx-auto fixed top-30 right-28 h-full">
         <Cart cartItems={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity}/>
+      </div>
       </div>
     </div>
   );
