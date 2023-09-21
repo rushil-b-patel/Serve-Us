@@ -1,25 +1,58 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const [input, setInput] = useState({
+    userType: "",
+    email: "",
+    number: "",
+    password: "",
+  });
 
-  const [userType, setUserType ] = useState("");
+  const [userType, setUserType] = useState("");
 
-  const onInputChange = (e) => {
-    setUserType(e.target.value);
-  };
+  const { login, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
 
-  const sigin = () =>{
-    console.log(userType);
+  const onSubmitFirebase = async (e) => {
+    e.preventDefault();
+    await login(input.email, input.password)
+    .then((response)=>{
+      navigate("/");
+      console.log(response.user);
+    })
+    .catch((error)=>{
+      alert(error.message);
+    })
   }
 
-  const { login } = useContext(AuthContext);
-  
+  const googlesigin = async (e) => {
+    console.log("Button CLicked")
+    e.preventDefault();
+    await signInWithGoogle()
+    .then((response)=>{
+      navigate("/");
+      console.log(response.user);
+    })
+    .catch((error)=>{
+      alert(error.message);
+    })
+  }
+
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="bg-white py-10 flex justify-center items-center">
       <div className="w-full max-w-sm p-4 bg-slate-100 border-gray-700 rounded-lg shadow sm:p-6 md:p-8">
-        <form className="space-y-6" action="" onSubmit={login}>
+        <form className="space-y-6" action="" onSubmit={onSubmitFirebase}>
           <h5 className="text-2xl font-medium text-center text-black">
             Sign in to continue
           </h5>
@@ -45,6 +78,8 @@ function Login() {
               type="email"
               name="email"
               id="email"
+              value={input.email}
+              onChange={onInputChange}
               className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
               placeholder="name@company.com"
               required
@@ -61,48 +96,33 @@ function Login() {
               type="password"
               name="password"
               id="password"
+              value={input.password}
+              onChange={onInputChange}
               placeholder="•••••••••"
               className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 text-black"
               required
+              autoComplete="current-password"
             />
           </div>
           <div className="flex items-start">
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="remember"
-                  type="checkbox"
-                  value=""
-                  className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 bg-gray-700 border-gray-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800"
-                  required
-                />
-              </div>
-              <label
-                htmlFor="remember"
-                className="ml-2 text-sm font-medium text-black"
-              >
-                Remember me
-              </label>
-            </div>
-            <p
-              className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-            >
-              Forgot Password?
-            </p>
+            <Link to='/ForgotPassword'>
+              <p className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">
+                Forgot Password?
+              </p>
+            </Link>
           </div>
           <button
-          onClick={sigin}
             type="submit"
             className="w-full text-white bg-black hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             Sign in
           </button>
           <div className="text-sm font-medium text-black flex justify-between">
-            Not registered?{" "}
+            Not registered ?{" "}
             <Link
               to="/Signup"
               className="text-blue-700 hover:underline dark:text-blue-500"
-            > 
+            >
               Create account
             </Link>
           </div>
@@ -113,15 +133,15 @@ function Login() {
           </div>
         </form>
         <button
-            className="w-full mt-4 flex items-center justify-center bg-white hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-400"
-          >
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-              alt="Google Logo"
-              className="w-6 h-6 mr-2"
-            />  
-            Sign in with Google
-          </button>
+        onClick={googlesigin} 
+        className="w-full mt-4 flex items-center justify-center bg-white hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-400">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+            alt="Google Logo"
+            className="w-6 h-6 mr-2"
+          />
+          Sign in with Google
+        </button>
       </div>
     </div>
   );

@@ -1,31 +1,16 @@
 import React from 'react';
 import SubscribeLetter from './SubscribeLetter';
-import { User, useAuth0 } from '@auth0/auth0-react';
+import { useAuth } from '../context/AuthContext';
 
 export default function Home() {
 
-  // const [showCurrentLocation, setShowCurrentLocation] = useState(false);
-  // const [selectedOption, setSelectedOption] = useState('');
-
-  // const handleOptionChange = (e) => {
-  //   setSelectedOption(e.target.value);
-  //   if (e.target.value === 'currentLocation') {
-  //     setShowCurrentLocation(true);
-  //   } else {
-  //     setShowCurrentLocation(false);
-  //   }
-  // };
-
-  // const fetchUserLocation = () => {
-  // };
-
-  const {user} = useAuth0();
+  const {currentUser} = useAuth();
 
   return (
     <div className="bg-white py-10 min-h-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-bold text-black mb-8">
-          Welcome {user?.name} to Urban Services
+          Welcome {currentUser.email}  to Urban Services
         </h2>
       </div>
 

@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import {useAuth} from '../context/AuthContext'
+
 
 function Signup() {
-  const { sendOtp } = useContext(AuthContext);
-  // const history = useHistory();
-  // const navigate = useNavigate();
+
   const fetchCityName = async (latitude, longitude) => {
     const apiKey = "pk.d3f74bc82b4883e52345f15f068a67be";
     const apiUrl = `https://us1.locationiq.com/v1/reverse.php?key=${apiKey}&lat=${latitude}&lon=${longitude}&format=json`;
@@ -15,7 +14,7 @@ function Signup() {
       const response = await fetch(apiUrl);
       const data = await response.json();
 
-      console.log(data); // Log the entire response for examination
+      // console.log(data);
 
       if (data.address || data.address.city) {
         const cityName = data.address.city;
@@ -54,12 +53,6 @@ function Signup() {
     } else {
       console.error("Geolocation is not available in this browser.");
     }
-  };
-
-  const onSubmit = (e) => {
-    console.log(e);
-    e.preventDefault();
-    sendOtp(input);
   };
 
   const [input, setInput] = useState({
@@ -170,10 +163,27 @@ function Signup() {
       return stateObj;
     });
   };
+
+  const {signup} = useAuth();
+
+  const navigate = useNavigate();
+  
+  const onSubmitFirebase = async (e)=>{
+    e.preventDefault();
+    await signup(input.email, input.password)
+    .then((response)=>{
+      navigate('/');
+      console.log(response.user);
+    })
+    .catch((error)=>{
+      alert(error.message);
+    })    
+  }
+
   return (
     <div className="bg-white py-10 flex justify-center items-center">
       <div className="max-w-lg bg-slate-100 border-gray-700 rounded-lg shadow py-10 px-8">
-        <form className="space-y-6" action="" onSubmit={onSubmit}>
+        <form className="space-y-6" action="" onSubmit={onSubmitFirebase}>
           <h5 className="text-2xl font-medium text-center text-black">
             Sign up to find the work you love
           </h5>
@@ -199,7 +209,7 @@ function Signup() {
               </label>
               <input
                 type="text"
-                name="firstname"
+                name="firstName"
                 id="firstname"
                 value={input.firstName}
                 onChange={onInputChange}
@@ -419,31 +429,10 @@ function Signup() {
               </span>
             )}
           </div>
-          <div className="flex items-start">
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="remember"
-                  type="checkbox"
-                  value=""
-                  className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 bg-gray-700 border-gray-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800"
-                  required
-                />
-              </div>
-              <label
-                htmlFor="remember"
-                className="ml-2 text-sm font-medium text-black"
-              >
-                Remember me
-              </label>
-            </div>
-          </div>
-
           <button
             to="/OtpVerification"
             type="submit"
             className="w-full text-white bg-black hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 my-5 text-center"
-            onClick={onSubmit}
           >
             {/* {success ? <Link to="/OTPVerification"> */}
             Signup
