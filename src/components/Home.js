@@ -1,16 +1,16 @@
 import React from 'react';
 import SubscribeLetter from './SubscribeLetter';
-import { useAuth } from '../context/AuthContext';
+// import { useAuth } from '../context/AuthContext';
 
 export default function Home() {
 
-  const {currentUser} = useAuth();
+  // const {currentUser} = useAuth();
 
   return (
     <div className="bg-white py-10 min-h-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-bold text-black mb-8">
-          Welcome {currentUser.email}  to Urban Services
+          Welcome to Urban Services
         </h2>
       </div>
 

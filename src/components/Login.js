@@ -16,7 +16,7 @@ function Login() {
   const { login, signInWithGoogle } = useAuth();
   const navigate = useNavigate();
 
-  const onSubmitFirebase = async (e) => {
+  const loginUser = async (e) => {
     e.preventDefault();
     await login(input.email, input.password)
     .then((response)=>{
@@ -52,7 +52,7 @@ function Login() {
   return (
     <div className="bg-white py-10 flex justify-center items-center">
       <div className="w-full max-w-sm p-4 bg-slate-100 border-gray-700 rounded-lg shadow sm:p-6 md:p-8">
-        <form className="space-y-6" action="" onSubmit={onSubmitFirebase}>
+        <form className="space-y-6" action="" onSubmit={loginUser}>
           <h5 className="text-2xl font-medium text-center text-black">
             Sign in to continue
           </h5>
@@ -62,6 +62,7 @@ function Login() {
             value={userType}
             onChange={onInputChange}
             className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            autoComplete="on"
             required
           >
             <option value="customer">Customer</option>

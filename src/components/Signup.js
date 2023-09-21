@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {useAuth} from '../context/AuthContext'
-
+import { useAuth } from "../context/AuthContext";
+import { database } from "../firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 
 function Signup() {
-
   const fetchCityName = async (latitude, longitude) => {
     const apiKey = "pk.d3f74bc82b4883e52345f15f068a67be";
     const apiUrl = `https://us1.locationiq.com/v1/reverse.php?key=${apiKey}&lat=${latitude}&lon=${longitude}&format=json`;
@@ -63,7 +63,7 @@ function Signup() {
     number: "",
     password: "",
     confirmPassword: "",
-    fied: "",
+    field: "",
     customField: "",
   });
 
@@ -164,26 +164,49 @@ function Signup() {
     });
   };
 
-  const {signup} = useAuth();
-
+  const { signup } = useAuth();
   const navigate = useNavigate();
-  
-  const onSubmitFirebase = async (e)=>{
+
+  const signupUser = async (e) => {
     e.preventDefault();
     await signup(input.email, input.password)
-    .then((response)=>{
-      navigate('/');
-      console.log(response.user);
-    })
-    .catch((error)=>{
-      alert(error.message);
-    })    
-  }
+      .then((response) => {
+        navigate("/");
+        console.log(response.user);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  const storeUser = async (e) => {
+    e.preventDefault();
+    
+    const userData = {
+      userType: input.userType,
+      firstName: input.firstName,
+      lastName: input.lastName,
+      email: input.email,
+      number: input.number,
+      field: input.field,
+      customField: input.customField,
+      location: input.location,
+    };
+
+    try {
+      await signupUser(e);
+      const docRef = await addDoc(collection(database, "users"), userData);
+      console.log("User data stored with ID: ", docRef.id);
+
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
+  };
 
   return (
     <div className="bg-white py-10 flex justify-center items-center">
       <div className="max-w-lg bg-slate-100 border-gray-700 rounded-lg shadow py-10 px-8">
-        <form className="space-y-6" action="" onSubmit={onSubmitFirebase}>
+        <form className="space-y-6" action="" onSubmit={storeUser}>
           <h5 className="text-2xl font-medium text-center text-black">
             Sign up to find the work you love
           </h5>
@@ -296,36 +319,36 @@ function Signup() {
             </div>
           </div>
           {input.userType === "service_provider" && (
-          <div>
-            <label
-              htmlFor="field"
-              className="block mb-2 text-sm font-medium text-black"
-            >
-              Select Your Profession
-            </label>
-            <select
-              name="field"
-              id="field"
-              value={input.field}
-              onChange={onInputChange}
-              onBlur={validateInput}
-              className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-              required
-            >
-              <option value="">Select Field</option>
-              <option value="Plumber">Plumber</option>
-              <option value="Electrician">Electrician</option>
-              <option value="Pest Control">Pest Control</option>
-              <option value="Hair Artist Women">Hair Artist (Women)</option>
-              <option value="Hair Artist Men">Hair Artist (Men)</option>
-              <option value="Painter">Painter</option>
-              <option value="Carpenter">Carpenter</option>
-              <option value="Other">Other</option>
-            </select>
-            {error.field && (
-              <span className="err text-md text-red-500">{error.field}</span>
-            )}
-          </div>
+            <div>
+              <label
+                htmlFor="field"
+                className="block mb-2 text-sm font-medium text-black"
+              >
+                Select Your Profession
+              </label>
+              <select
+                name="field"
+                id="field"
+                value={input.field}
+                onChange={onInputChange}
+                onBlur={validateInput}
+                className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                required
+              >
+                <option value="">Select Field</option>
+                <option value="Plumber">Plumber</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Pest Control">Pest Control</option>
+                <option value="Hair Artist Women">Hair Artist (Women)</option>
+                <option value="Hair Artist Men">Hair Artist (Men)</option>
+                <option value="Painter">Painter</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="Other">Other</option>
+              </select>
+              {error.field && (
+                <span className="err text-md text-red-500">{error.field}</span>
+              )}
+            </div>
           )}
           {input.field === "Other" && (
             <div>
@@ -372,7 +395,6 @@ function Signup() {
                 name="location"
                 id="location"
                 value={input.location}
-                // onChange={(e) => setCityName(e.target.value)}
                 onChange={onInputChange}
                 onBlur={validateInput}
                 className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
@@ -434,9 +456,7 @@ function Signup() {
             type="submit"
             className="w-full text-white bg-black hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 my-5 text-center"
           >
-            {/* {success ? <Link to="/OTPVerification"> */}
             Signup
-            {/* </Link> : "Signup"} */}
           </button>
           <div class="text-sm font-medium text-black flex justify-between">
             Already registered?{" "}
