@@ -1,5 +1,5 @@
 import React from 'react';
-import ServiceProviderCard from './ServiceProviderCard';
+import ServiceProviderCard from './Card/ServiceProviderCard';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import Cart from './Cart';

@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { database } from "../firebaseConfig";
+import { useAuth } from "../../context/AuthContext";
+import { database } from "../../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 
 function Signup() {

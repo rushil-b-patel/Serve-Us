@@ -1,22 +1,22 @@
-import React from 'react';
-import SubscribeLetter from './SubscribeLetter';
-// import { useAuth } from '../context/AuthContext';
+import React from "react";
+import SubscribeLetter from "./Card/SubscribeLetter";
+import { useAuth } from "../context/AuthContext";
 
 export default function Home() {
-
-  // const {currentUser} = useAuth();
+  const { currentUser } = useAuth();
 
   return (
     <div className="bg-white py-10 min-h-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-bold text-black mb-8">
-          Welcome to Urban Services
+          Welcome {currentUser ? currentUser.firstName : ""} to Urban
+          Services
         </h2>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-center">
         <div className="relative mr-4">
-        <input
+          <input
             type="text"
             name="service"
             id="service"

@@ -1,7 +1,7 @@
 import React from "react";
-import ServiceCardPrice from "./ServiceCardPrice";
+import ServiceCardPrice from "./Card/ServiceCardPrice";
 import { Link } from "react-router-dom";
-import ServiceCard from "./ServiceCard";
+import ServiceCard from "./Card/ServiceCard";
 
 function Services() {
 

@@ -1,17 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Services from "./components/Services";
 import { ToastContainer } from "react-toastify";
 import ServiceProvider from "./components/ServiceProvider";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import ServiceProviderCard from "./components/ServiceProviderCard";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import ServiceProviderCard from "./components/Card/ServiceProviderCard";
 import { AuthProvider } from "./context/AuthContext";
-import Profile from "./components/Profile";
-import ForgotPassword from "./components/ForgotPassword";
+import Profile from "./components/Auth/Profile";
+import ForgotPassword from "./components/Auth/ForgotPassword";
 
 function App() {
   return (
@@ -32,7 +31,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/services" element={<Services />}></Route>
-        <Route path="/Form" element={<Form />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/Signup" element={<Signup />}></Route>
         <Route path="/ServiceProvider" element={<ServiceProvider />}></Route>
