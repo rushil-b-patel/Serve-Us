@@ -114,7 +114,7 @@ function Login() {
           </div>
           <button
             type="submit"
-            className="w-full text-white bg-black hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            className="w-full text-white bg-black hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center ease-in duration-200"
           >
             Sign in
           </button>
@@ -135,7 +135,7 @@ function Login() {
         </form>
         <button
         onClick={googlesigin} 
-        className="w-full mt-4 flex items-center justify-center bg-white hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-400">
+        className="w-full mt-4 flex items-center justify-center bg-white hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-400 ease-in duration-200">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
             alt="Google Logo"

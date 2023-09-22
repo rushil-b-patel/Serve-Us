@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { database } from "../../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
+import { useEffect } from "react";
 
 function Signup() {
   const fetchCityName = async (latitude, longitude) => {
@@ -56,7 +57,7 @@ function Signup() {
   };
 
   const [input, setInput] = useState({
-    userType: "",
+    userType: "customer",
     firstName: "",
     lastName: "",
     email: "",
@@ -65,6 +66,7 @@ function Signup() {
     confirmPassword: "",
     field: "",
     customField: "",
+    profession:"",
   });
 
   const [error, setError] = useState({
@@ -188,11 +190,10 @@ function Signup() {
       lastName: input.lastName,
       email: input.email,
       number: input.number,
-      field: input.field,
-      customField: input.customField,
       location: input.location,
+      profession:input.customField || input.field,
     };
-
+    console.log(userData)
     try {
       await signupUser(e);
       const docRef = await addDoc(collection(database, "users"), userData);
@@ -379,7 +380,7 @@ function Signup() {
             <div>
               <button
                 type="button"
-                className="bg-black text-white p-2.5 text-sm rounded-lg w-full hover:bg-blue-700"
+                className="bg-black text-white p-2.5 text-sm rounded-lg w-full hover:bg-blue-700 ease-in duration-200"
                 onClick={fetchUserLocation}
               >
                 Fetch My Location
@@ -454,15 +455,15 @@ function Signup() {
           <button
             to="/OtpVerification"
             type="submit"
-            className="w-full text-white bg-black hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 my-5 text-center"
+            className="w-full text-white bg-black hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 my-5 text-center ease-in duration-200"
           >
             Signup
           </button>
-          <div class="text-sm font-medium text-black flex justify-between">
+          <div className="text-sm font-medium text-black flex justify-between">
             Already registered?{" "}
             <Link
               to="/Login"
-              class="text-blue-700 hover:underline dark:text-blue-500"
+              className="text-blue-700 hover:underline dark:text-blue-500"
             >
               Sigin to your Account
             </Link>
