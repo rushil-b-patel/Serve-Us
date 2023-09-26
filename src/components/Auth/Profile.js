@@ -18,10 +18,12 @@ function Profile() {
 
   useEffect(() => {
     if (currentUser) {
-      const q = query(
-        collection(database, "users"),
-        where("email", "==", currentUser.email)
-      );
+      console.log(currentUser);
+      const userTypeCollection = currentUser.userType === "customer" ? "customers" : "users";
+      console.log("Current User Type:", currentUser.userType);
+      console.log("Current User Email:", currentUser.email);
+      console.log(userTypeCollection);
+      const q = query(collection(database, userTypeCollection),where("email", "==", currentUser.email));
 
       getDocs(q)
         .then((querySnapshot) => {
@@ -43,7 +45,9 @@ function Profile() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         {currentUser && userData ? (
           <div>
-            <h2 className="text-3xl font-bold text-black mb-8">Welcome {userData.firstName}!</h2>
+            <h2 className="text-3xl font-bold text-black mb-8">
+              Welcome {userData.firstName}!
+            </h2>
             {userData ? (
               <div>
                 <div className="shadow overflow-hidden sm:rounded-lg">
@@ -58,37 +62,33 @@ function Profile() {
                         <dt className="text-sm font-medium text-black">
                           Full name
                         </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                           {userData.firstName} {userData.lastName}
                         </dd>
                       </div>
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-black">
-                          Field
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-black">Field</dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                           {userData.profession}
                         </dd>
                       </div>
-                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-black">
+                      <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-black">
                           Email address
                         </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                           {userData.email}
                         </dd>
                       </div>
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-black">
-                          Location
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-black">Location</dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                           {userData.location}
                         </dd>
                       </div>
-                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-black">Phone</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-black">Phone</dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                           {userData.number}
                         </dd>
                       </div>
@@ -107,7 +107,15 @@ function Profile() {
             )}
           </div>
         ) : (
-          <p>Please log in to view your data.</p>
+          <div>
+            <p>Please log in to view your data.</p>
+            <button
+              className="mt-5 text-white bg-red-500 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center ease-in duration-200"
+              onClick={() => signOut()}
+            >
+              Sign Out
+            </button>
+          </div>
         )}
       </div>
     </div>

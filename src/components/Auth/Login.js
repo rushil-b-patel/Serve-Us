@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { database } from "../../firebaseConfig";
 
 function Login() {
+
+  const [userData, setUserData] = useState(null);
+
   const [input, setInput] = useState({
     userType: "",
     email: "",
@@ -11,22 +16,59 @@ function Login() {
     password: "",
   });
 
-  const [userType, setUserType] = useState("");
-
   const { login, signInWithGoogle } = useAuth();
   const navigate = useNavigate();
 
+  // const loginUser = async (e) => {
+  //   e.preventDefault();
+  //   await login(input.email, input.password)
+  //   .then((response)=>{
+  //     navigate("/");
+  //     console.log(response.user);
+  //   })
+  //   .catch((error)=>{
+  //     alert(error.message);
+  //   })
+  // }
+
   const loginUser = async (e) => {
     e.preventDefault();
+    console.log("Logging in with email:", input.email, "and password:", input.password);
+  
+    const userTypeCollection = input.userType === "customer" ? "customers" : "professionals";
+  
+    const q = query(
+      collection(database, userTypeCollection),
+      where("email", "==", input.email)
+    );
+  
     await login(input.email, input.password)
-    .then((response)=>{
-      navigate("/");
-      console.log(response.user);
-    })
-    .catch((error)=>{
-      alert(error.message);
-    })
-  }
+      .then((response) => {
+        console.log("Login successful.");
+        console.log("User data:", response.user);
+  
+        getDocs(q)
+          .then((querySnapshot) => {
+            if (!querySnapshot.empty) {
+              const user = querySnapshot.docs[0].data();
+              setUserData(user);
+              console.log("User data from Firestore:", user);
+            } else {
+              console.error("User not found in Firestore.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching user data: ", error);
+          });
+  
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+        alert(error.message);
+      });
+  };
+  
 
   const googlesigin = async (e) => {
     console.log("Button CLicked")
@@ -47,6 +89,7 @@ function Login() {
       ...prev,
       [name]: value,
     }));
+    console.log(input);
   };
 
   return (
@@ -59,7 +102,7 @@ function Login() {
           <select
             name="userType"
             id="userType"
-            value={userType}
+            value={input.userType}
             onChange={onInputChange}
             className="bg-slate-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
             autoComplete="on"

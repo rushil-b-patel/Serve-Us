@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { database } from "../../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
-import { useEffect } from "react";
 
 function Signup() {
   const fetchCityName = async (latitude, longitude) => {
@@ -196,9 +195,13 @@ function Signup() {
     console.log(userData)
     try {
       await signupUser(e);
-      const docRef = await addDoc(collection(database, "users"), userData);
-      console.log("User data stored with ID: ", docRef.id);
-
+      if (input.userType === 'customer') {
+        const docRef = await addDoc(collection(database, 'customers'), userData);
+        console.log('Customer data stored with ID:', docRef.id);
+      } else if (input.userType === 'service_provider') {
+        const docRef = await addDoc(collection(database, 'users'), userData);
+        console.log('Professional data stored with ID:', docRef.id);
+      }
     } catch (error) {
       console.error("Error adding document: ", error);
     }
