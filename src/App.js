@@ -11,6 +11,7 @@ import ServiceProviderCard from "./components/Card/ServiceProviderCard";
 import { AuthProvider } from "./context/AuthContext";
 import Profile from "./components/Auth/Profile";
 import ForgotPassword from "./components/Auth/ForgotPassword";
+import AddService from "./components/AddService";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/ServiceProvider" element={<ServiceProvider />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/ForgotPassword" element={<ForgotPassword />}></Route>
+        <Route path="/AddService" element={<AddService />}></Route>
         <Route
           path="/ServiceProviderCard"
           element={<ServiceProviderCard />}

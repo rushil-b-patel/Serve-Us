@@ -140,7 +140,7 @@ export default function Navbar() {
                 <div className="flex items-center">
                   {currentUser ? (
                     <NavLink
-                      to="/profile" // Replace with your profile route
+                      to="/profile"
                       className="font-semibold text-white hover:text-[#F5D547] aria-[current=page]:text-[#F5D547] ease-in duration-150"
                     >
                       Profile

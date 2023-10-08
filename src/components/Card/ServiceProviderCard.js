@@ -1,7 +1,6 @@
 import React from "react";
 
 function ServiceProviderCard(service) {
-  
   return (
     <div className="flex justify-center items-center">
       <div className="max-w-sm bg-white px-6 pt-6 pb-2 mb-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
@@ -15,13 +14,13 @@ function ServiceProviderCard(service) {
             alt={service.name}
           />
           <p className="absolute top-0 bg-yellow-300 text-black font-semibold py-1 px-2 rounded-br-lg rounded-tl-lg">
-            {service.price}
+            Rs.{service.price}
           </p>
         </div>
         <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
           {service.title}
         </h1>
-        <div className="my-4">
+        <div className="my-4 h-32 overflow-hidden"> {/* Set a fixed height */}
           <div className="flex justify-between space-x-1 items-center mb-1.5">
             <span>
               <svg
@@ -79,12 +78,12 @@ function ServiceProviderCard(service) {
             </span>
             <p>{service.description}</p>
           </div>
-          <button 
+        </div>
+        <button 
           onClick={service.addToCart}
           className="mt-4 text-xl w-full text-white bg-blue-700 py-2 rounded-xl shadow-lg hover:bg-blue-600">
             Add to Cart
-          </button>
-        </div>
+        </button>
       </div>
     </div>
   );

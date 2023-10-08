@@ -1,6 +1,6 @@
 import React from "react";
 
-function Cart({ cartItems, removeFromCart, updateQuantity }) {
+function Cart({ cartItems, removeFromCart, updateQuantity, emptyCart }) {
   const cartQuantities = {};
 
   cartItems.forEach((service) => {
@@ -20,7 +20,7 @@ function Cart({ cartItems, removeFromCart, updateQuantity }) {
   return (
     <div className="bg-white rounded-xl shadow-lg">
       <h2 className="text-2xl font-semibold p-4">Cart</h2>
-      {total === 0 ? ( // Check if the total is 0
+      {total === 0 ? (
         <p className="p-4 text-center text-gray-600">Cart is empty</p>
       ) : (
         <>
@@ -42,7 +42,24 @@ function Cart({ cartItems, removeFromCart, updateQuantity }) {
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() =>
+                      updateQuantity(service, service.quantity - 1)
+                    }
+                    className="text-red-500 hover:text-red-700"
+                    disabled={service.quantity === 1} // Disable if quantity is 1
+                  >
+                    -
+                  </button>
                   <span className="text-xl">{service.quantity}</span>
+                  <button
+                    onClick={() =>
+                      updateQuantity(service, service.quantity + 1)
+                    }
+                    className="text-green-500 hover:text-green-700"
+                  >
+                    +
+                  </button>
                 </div>
                 <span className="text-xl">{service.price}</span>
                 <button
@@ -59,6 +76,12 @@ function Cart({ cartItems, removeFromCart, updateQuantity }) {
             <span className="text-2xl">{total.toFixed(2)} Rs.</span>
           </div>
           <div className="p-4">
+            <button
+              onClick={() => emptyCart()} // Add the emptyCart function
+              className="bg-red-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-red-600"
+            >
+              Empty Cart
+            </button>
             <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
               Checkout
             </button>
